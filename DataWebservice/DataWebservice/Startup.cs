@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using DataWebservice.Data;
 
 namespace DataWebservice
 {
@@ -24,6 +26,11 @@ namespace DataWebservice
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<DataWebserviceContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DataWebserviceContext")));
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
