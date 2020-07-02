@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace DataWebservice.Models
 {
-    public class Class
+    public class Sensor
     {
+        public int sensorID { get; set; }
+        public int roomID { get; set; }
+        public int servoSetting { get; set; }
     }
 }

@@ -2,10 +2,11 @@ using System;
 
 namespace DataWebservice.Models
 {
-    public class ErrorViewModel
+    public class SensorLog
     {
-        public string RequestId { get; set; }
+        public int SensorID { get; set; }
+        public DateTime timestamp { get; set; }
+        public bool servoSetting { get; set; }
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
 }

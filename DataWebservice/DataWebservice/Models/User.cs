@@ -7,5 +7,8 @@ namespace DataWebservice.Models
 {
     public class User
     {
+        public int userID { get; set; }
+        public int password { get; set; }
+        public bool admin { get; set; }
     }
 }

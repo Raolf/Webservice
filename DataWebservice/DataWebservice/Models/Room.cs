@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace DataWebservice.Models
 {
-    public class Class
+    public class Room
     {
+        public int roomID { get; set; }
+        public int name { get; set; }
     }
 }
