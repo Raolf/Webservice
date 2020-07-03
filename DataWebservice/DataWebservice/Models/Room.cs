@@ -9,5 +9,7 @@ namespace DataWebservice.Models
     {
         public int roomID { get; set; }
         public int name { get; set; }
+        public List<RoomAccess> roomAccess { get; set; }
+        public List<Sensor> sensors { get; set; }
     }
 }

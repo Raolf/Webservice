@@ -9,6 +9,9 @@ namespace DataWebservice.Models
     {
         public int sensorID { get; set; }
         public int roomID { get; set; }
+        public Room room { get; set; }
         public int servoSetting { get; set; }
+        public List<Data> data { get; set; }
+        public List<SensorLog> sensorLog { get; set; }
     }
 }
