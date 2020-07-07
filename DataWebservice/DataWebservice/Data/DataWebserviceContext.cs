@@ -20,9 +20,29 @@ namespace DataWebservice.Data
 
             modelBuilder.Entity<RoomAccess>().HasKey(ra => new { ra.roomID, ra.userID });
 
+            modelBuilder.Entity<RoomAccess>()
+                .HasOne(u => u.user)
+                .WithMany(ra => ra.roomAccess)
+                .HasForeignKey(r => r.userID);
+
+            modelBuilder.Entity<RoomAccess>()
+                .HasOne(r => r.room)
+                .WithMany(ra => ra.roomAccess)
+                .HasForeignKey(r => r.roomID);
+
+
+
             modelBuilder.Entity<Models.Data>().HasKey(sd => new { sd.sensorID, sd.timestamp });
 
+            modelBuilder.Entity<Models.Data>()
+                .HasOne(r => r.sensor)
+                .WithMany(sd => sd.data)
+                .HasForeignKey(r => r.sensorID);
+
+
+
             modelBuilder.Entity<SensorLog>().HasKey(tl => tl.sensorID);
+
 
             modelBuilder.Entity<Room>().ToTable("Room");
 
