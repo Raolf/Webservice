@@ -1,0 +1,45 @@
+﻿@model DataWebservice.Models.Data
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Data</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="sensorID" />
+            <input type="hidden" asp-for="timestamp" />
+            <div class="form-group">
+                <label asp-for="humidity" class="control-label"></label>
+                <input asp-for="humidity" class="form-control" />
+                <span asp-validation-for="humidity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CO2" class="control-label"></label>
+                <input asp-for="CO2" class="form-control" />
+                <span asp-validation-for="CO2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="temperature" class="control-label"></label>
+                <input asp-for="temperature" class="form-control" />
+                <span asp-validation-for="temperature" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
