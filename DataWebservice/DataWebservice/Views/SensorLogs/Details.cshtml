@@ -1,0 +1,30 @@
+﻿@model DataWebservice.Models.SensorLog
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>SensorLog</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.timestamp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.timestamp)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.servoSetting)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.servoSetting)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.sensorID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

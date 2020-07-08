@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DataWebservice.Models.SensorLog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.timestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.servoSetting)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.timestamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.servoSetting)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.sensorID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.sensorID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.sensorID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

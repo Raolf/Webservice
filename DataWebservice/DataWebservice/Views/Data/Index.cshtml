@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DataWebservice.Models.Data>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.sensor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.humidity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CO2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.temperature)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sensor.sensorID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.humidity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CO2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.temperature)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

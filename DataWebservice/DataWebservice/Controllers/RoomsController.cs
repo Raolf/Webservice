@@ -33,8 +33,8 @@ namespace DataWebservice.Controllers
                 return NotFound();
             }
 
-            var room = await _context.Room
-                .FirstOrDefaultAsync(m => m.roomID == id);
+            //var room = await _context.Room.Include(ra=>ra.roomAccess).ThenInclude(u=>u.user).FirstOrDefaultAsync(m => m.roomID == id);
+            var room = await _context.Room.FirstOrDefaultAsync(m => m.roomID == id);
             if (room == null)
             {
                 return NotFound();
