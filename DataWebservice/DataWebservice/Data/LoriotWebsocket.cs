@@ -111,7 +111,7 @@ namespace DataWebservice.Data
             if (dataArray.Length < 4)
             {
                 Console.WriteLine("Message was too short, did not count 8 bytes");
-                return null;
+                return;
             }
             data.humidity = dataArray[0];
             data.temperature = dataArray[1];
