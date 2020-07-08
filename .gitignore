@@ -6,3 +6,4 @@ DataWebservice/DataWebservice/obj/Debug/netcoreapp3.1/DataWebservice.csprojAssem
 DataWebservice/DataWebservice/obj/Debug/netcoreapp3.1/DataWebservice.assets.cache
 DataWebservice/DataWebservice/obj/DataWebservice.csproj.nuget.dgspec.json
 DataWebservice/.vs/DataWebservice/v16/Server/sqlite3/storage.ide-wal
+DataWebservice/DataWebservice/Program.cs
