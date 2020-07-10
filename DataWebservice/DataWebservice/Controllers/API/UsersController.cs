@@ -34,6 +34,11 @@ namespace DataWebservice.Controllers.API
         {
             var user = await _context.User.FindAsync(id);
 
+            var roomAccess = await _context.RoomAccess.Where(r => r.userID == user.userID).Include(r => r.room).ToListAsync();
+
+            user.roomAccess = roomAccess;
+            
+
             if (user == null)
             {
                 return NotFound();

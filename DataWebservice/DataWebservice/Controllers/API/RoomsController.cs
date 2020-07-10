@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DataWebservice.Data;
 using DataWebservice.Models;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace DataWebservice.Controllers.API
 {
@@ -32,7 +33,13 @@ namespace DataWebservice.Controllers.API
         [HttpGet("{id}")]
         public async Task<ActionResult<Room>> GetRoom(int id)
         {
-            var room = await _context.Room.FindAsync(id);
+            var room = await _context.Room.Where(r => r.roomID == id)
+                .Include(r => r.sensors)
+                .ThenInclude(s => s.data)
+                .Include(r => r.roomAccess)
+                .ThenInclude(ra => ra.user)
+                .FirstOrDefaultAsync();
+            //.FindAsync(id);
 
             if (room == null)
             {
@@ -41,6 +48,25 @@ namespace DataWebservice.Controllers.API
 
             return room;
         }
+
+        // GET: api/Room/5
+        [HttpGet("roomsforuser/{id}")]
+        public async Task<ActionResult<IEnumerable<Room>>> GetRoomsForUser(int id)
+        {
+
+            var roomAccess = await _context.RoomAccess.Where(ra => ra.userID == id).ToListAsync();
+            List<Room> rooms = new List<Room>();
+
+            foreach (var item in roomAccess)
+            {
+                var room = await _context.Room.FindAsync(item.roomID);
+                rooms.Add(room);
+            }
+            return rooms;
+        }
+
+
+
 
         // PUT: api/Rooms/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
