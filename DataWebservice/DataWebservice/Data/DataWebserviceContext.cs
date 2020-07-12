@@ -4,19 +4,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DataWebservice.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace DataWebservice.Data
 {
-    public class DataWebserviceContext : DbContext
+    public class DataWebserviceContext : IdentityDbContext<IdentityUser>
     {
         public DataWebserviceContext (DbContextOptions<DataWebserviceContext> options)
             : base(options)
         {
         }
 
+
+        public DataWebserviceContext()
+        {
+
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+
 
             modelBuilder.Entity<RoomAccess>().HasKey(ra => new { ra.roomID, ra.userID });
 
