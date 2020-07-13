@@ -95,6 +95,10 @@
             "Websocket.Client": {
               "target": "Package",
               "version": "[4.3.15, )"
+            },
+            "Z.EntityFramework.Extensions": {
+              "target": "Package",
+              "version": "[4.0.80, )"
             }
           },
           "imports": [

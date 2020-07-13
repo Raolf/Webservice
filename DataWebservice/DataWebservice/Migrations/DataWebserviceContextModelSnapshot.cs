@@ -127,9 +127,168 @@ namespace DataWebservice.Migrations
                     b.Property<int>("password")
                         .HasColumnType("int");
 
+                    b.Property<string>("username")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("userID");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("DataWebservice.Models.Warehousing.Stage.DataDim", b =>
+                {
+                    b.Property<int>("M_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CO2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DataID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Humidity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Temperature")
+                        .HasColumnType("int");
+
+                    b.HasKey("M_ID");
+
+                    b.ToTable("DataDim");
+                });
+
+            modelBuilder.Entity("DataWebservice.Models.Warehousing.Stage.DateDim", b =>
+                {
+                    b.Property<int>("D_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Holiday")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Hour")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Minute")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Monthname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Seconds")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Weekday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("D_ID");
+
+                    b.ToTable("DateDim");
+                });
+
+            modelBuilder.Entity("DataWebservice.Models.Warehousing.Stage.FactTable", b =>
+                {
+                    b.Property<int>("UniqueID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("D_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("R_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("S_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Servosetting")
+                        .HasColumnType("int");
+
+                    b.Property<int>("U_ID")
+                        .HasColumnType("int");
+
+                    b.HasKey("UniqueID");
+
+                    b.ToTable("FactTable");
+                });
+
+            modelBuilder.Entity("DataWebservice.Models.Warehousing.Stage.RoomDim", b =>
+                {
+                    b.Property<int>("R_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoomID")
+                        .HasColumnType("int");
+
+                    b.HasKey("R_ID");
+
+                    b.ToTable("RoomDim");
+                });
+
+            modelBuilder.Entity("DataWebservice.Models.Warehousing.Stage.ServoDim", b =>
+                {
+                    b.Property<int>("S_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DaysSinceSet")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HoursSinceSet")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PD_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SecondsSinceSet")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SensorID")
+                        .HasColumnType("int");
+
+                    b.HasKey("S_ID");
+
+                    b.ToTable("ServoDim");
+                });
+
+            modelBuilder.Entity("DataWebservice.Models.Warehousing.Stage.UserDim", b =>
+                {
+                    b.Property<int>("U_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Admin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("DisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("U_ID");
+
+                    b.ToTable("UserDim");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

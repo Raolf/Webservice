@@ -189,8 +189,6 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Deb
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Rooms\Create.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Rooms\Delete.cshtml.g.cs
@@ -410,3 +408,16 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Deb
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.csproj.CoreCompileInputs.cache
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\EntityFramework.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Z.EntityFramework.Extensions.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users1\Create.cshtml.g.cs
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users1\Delete.cshtml.g.cs
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users1\Details.cshtml.g.cs
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users1\Edit.cshtml.g.cs
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users1\Index.cshtml.g.cs
