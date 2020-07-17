@@ -376,19 +376,10 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Deb
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Sensors\Details.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Sensors\Edit.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Sensors\Index.cshtml.g.cs
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users\Create.cshtml.g.cs
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users\Delete.cshtml.g.cs
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users\Details.cshtml.g.cs
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users\Edit.cshtml.g.cs
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\API\Index.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.Owin.dll
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.Owin.Security.dll
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.Owin.Security.OAuth.dll
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Owin.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -403,9 +394,6 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Deb
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.csproj.CoreCompileInputs.cache
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\EntityFramework.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.CodeDom.dll
@@ -419,6 +407,7 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Deb
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users1\Details.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users1\Edit.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users1\Index.cshtml.g.cs
+<<<<<<< Updated upstream
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\DataWebservice.StaticWebAssets.xml
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\EntityFramework.dll
@@ -459,3 +448,22 @@ C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debu
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users1\Details.cshtml.g.cs
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users1\Edit.cshtml.g.cs
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\Razor\Views\Users1\Index.cshtml.g.cs
+=======
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.ApplicationInsights.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AI.DependencyCollector.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DiagnosticAdapter.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Connected Services\Application Insights\ConnectedService.json
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.ApplicationInsights.AspNetCore.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AI.EventCounterCollector.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AI.WindowsServer.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.ApplicationInsights.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.csproj.CoreCompileInputs.cache
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\web.config
+>>>>>>> Stashed changes
