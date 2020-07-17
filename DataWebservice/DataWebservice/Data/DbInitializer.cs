@@ -20,13 +20,13 @@ namespace DataWebservice.Data
 
             var rooms = new Room[]
             {
-            new Room{roomID=1,name=420},
-            new Room{roomID=2,name=69},
-            new Room{roomID=3,name=123},
-            new Room{roomID=4,name=987},
-            new Room{roomID=5,name=500},
-            new Room{roomID=6,name=600},
-            new Room{roomID=7,name=700}
+            new Room{roomID=1,name="420"},
+            new Room{roomID=2,name="69"},
+            new Room{roomID=3,name="123"},
+            new Room{roomID=4,name="987"},
+            new Room{roomID=5,name="500"},
+            new Room{roomID=6,name="600"},
+            new Room{roomID=7,name="700"}
 
             };
             foreach (Room r in rooms)

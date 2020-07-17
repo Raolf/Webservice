@@ -4,19 +4,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DataWebservice.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using DataWebservice.Models.Warehousing.Stage;
 
 namespace DataWebservice.Data
 {
-    public class DataWebserviceContext : DbContext
+    public class DataWebserviceContext : IdentityDbContext<IdentityUser>
     {
         public DataWebserviceContext (DbContextOptions<DataWebserviceContext> options)
             : base(options)
         {
         }
 
+
+        public DataWebserviceContext()
+        {
+
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+
 
             modelBuilder.Entity<RoomAccess>().HasKey(ra => new { ra.roomID, ra.userID });
 
@@ -57,31 +68,33 @@ namespace DataWebservice.Data
             modelBuilder.Entity<User>().ToTable("User");
 
 
+            modelBuilder.Entity<FactTable>().HasKey(ft => ft.UniqueID);
+
+            modelBuilder.Entity<DataDim>().HasKey(da => da.M_ID);
+
+            modelBuilder.Entity<DateDim>().HasKey(de => de.D_ID);
+
+            modelBuilder.Entity<RoomDim>().HasKey(rd => rd.R_ID);
+
+            modelBuilder.Entity<ServoDim>().HasKey(sd => sd.S_ID);
+
+            modelBuilder.Entity<UserDim>().HasKey(ud => ud.U_ID);
 
         }
 
-
-
         public DbSet<DataWebservice.Models.Room> Room { get; set; }
-
-
-
         public DbSet<DataWebservice.Models.Data> Data { get; set; }
-
-
-
         public DbSet<DataWebservice.Models.RoomAccess> RoomAccess { get; set; }
-
-
-
         public DbSet<DataWebservice.Models.Sensor> Sensor { get; set; }
-
-
-
         public DbSet<DataWebservice.Models.SensorLog> SensorLog { get; set; }
-
-
-
         public DbSet<DataWebservice.Models.User> User { get; set; }
+
+        public DbSet<FactTable> FactTable { get; set; }
+        public DbSet<DateDim> DataDim { get; set; }
+        public DbSet<DateDim> DateDim { get; set; }
+        public DbSet<RoomDim> RoomDim { get; set; }
+        public DbSet<ServoDim> ServoDim { get; set; }
+        public DbSet<UserDim> UserDim { get; set; }
+
     }
 }
