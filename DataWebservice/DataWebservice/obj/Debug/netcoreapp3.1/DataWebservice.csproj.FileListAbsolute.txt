@@ -228,3 +228,14 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Deb
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.pdb
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.genruntimeconfig.cache
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.csprojAssemblyReference.cache
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\staticwebassets\DataWebservice.StaticWebAssets.Manifest.cache
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\staticwebassets\DataWebservice.StaticWebAssets.xml
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.RazorAssemblyInfo.cache
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.RazorAssemblyInfo.cs
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.AssemblyInfoInputs.cache
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.AssemblyInfo.cs
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.dll
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.pdb
