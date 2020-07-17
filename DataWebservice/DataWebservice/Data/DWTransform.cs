@@ -75,5 +75,42 @@ namespace DataWebservice.Data
             //DaysSince = data.Timestamp.hours-sensorLog.Timestamp.hours
         }
 
+        public void Load()
+        {
+            //var DB = context.getDB
+            //LoadRoomDim();
+            //LoadServoDim();
+            //LoadUserDim();
+            //LoadFactTable();
+        }
+        public void LoadRoomDim()
+        {
+            //var DB = context.getDB
+            //foreach(var room in DB.RoomDim){
+            //  FactRoom = room.clone();
+            //}
+        }
+        public void LoadServoDim()
+        {
+            //var DB = context.getDB
+            //foreach(var servo in DB.ServoDim){
+            //  FactServo = servo.clone();
+            //}
+        }
+        public void LoadUserDim()
+        {
+            //var DB = context.getDB
+            //foreach(var user in DB.UserDim){
+            //  FactUser = user.clone();
+            //}
+        }
+        public void LoadFactTable()
+        {
+            //var DB = context.getDB
+            //foreach(var room in DB.RoomDim){
+            //  FactRoom = room.clone();
+            //}
+        }
+
     }
 }
