@@ -35,8 +35,6 @@ namespace DataWebservice.Data
             }
             //Cannot insert explicit value for identity column in table 'Room' when IDENTITY_INSERT is set to OFF
             context.SaveChanges();
-
-           
         }
     }
 }

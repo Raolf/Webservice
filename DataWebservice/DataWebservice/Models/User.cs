@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 
 namespace DataWebservice.Models
 {
-    public class User //: IdentityUser
+    public class User 
     {
 
         public int userID { get; set; }
-        public String username { get; set; }
-        public int password { get; set; }
-        public bool admin { get; set; }
-        public List<RoomAccess> roomAccess { get; set; }
+        public string displayName { get; set; }
+
+        public string password { get; set; }
+
+        public Boolean isAdmin { get; set; }
+
+        public ICollection<Room> room { get; set; }
     }
 }
