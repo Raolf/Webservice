@@ -39,7 +39,7 @@
           "System.Net.WebSockets": "4.3.0",
           "System.Net.WebSockets.Client": "4.3.2",
           "Websocket.Client": "4.3.15",
-          "Z.EntityFramework.Extensions": "4.0.81",
+          "Z.EntityFramework.Extensions": "4.0.82",
           "System.Reactive.Reference": "4.3.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
@@ -1603,25 +1603,7 @@
       },
       "Microsoft.Win32.SystemEvents/4.7.0": {
         "dependencies": {
-<<<<<<< Updated upstream
-          "Microsoft.NETCore.Platforms": "3.0.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.700.19.46214"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.700.19.46214"
-          }
-=======
           "Microsoft.NETCore.Platforms": "3.1.0"
->>>>>>> Stashed changes
         }
       },
       "NETStandard.Library/1.6.1": {
@@ -2275,33 +2257,8 @@
       },
       "System.Drawing.Common/4.7.0": {
         "dependencies": {
-<<<<<<< Updated upstream
-          "Microsoft.NETCore.Platforms": "3.0.0",
-          "Microsoft.Win32.SystemEvents": "4.6.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Drawing.Common.dll": {
-            "assemblyVersion": "4.0.0.1",
-            "fileVersion": "4.6.26919.2"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
-            "rid": "unix",
-            "assetType": "runtime",
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.700.19.46214"
-          },
-          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.700.19.46214"
-          }
-=======
           "Microsoft.NETCore.Platforms": "3.1.0",
           "Microsoft.Win32.SystemEvents": "4.7.0"
->>>>>>> Stashed changes
         }
       },
       "System.Globalization/4.3.0": {
@@ -3113,15 +3070,15 @@
           "lib/netstandard2.1/Websocket.Client.dll": {}
         }
       },
-      "Z.EntityFramework.Extensions/4.0.81": {
+      "Z.EntityFramework.Extensions/4.0.82": {
         "dependencies": {
           "EntityFramework": "6.3.0",
           "System.Runtime.Caching": "4.6.0"
         },
         "runtime": {
           "lib/netstandard2.1/Z.EntityFramework.Extensions.dll": {
-            "assemblyVersion": "4.0.81.0",
-            "fileVersion": "4.0.81.0"
+            "assemblyVersion": "4.0.82.0",
+            "fileVersion": "4.0.82.0"
           }
         },
         "compile": {
@@ -6273,12 +6230,12 @@
       "path": "websocket.client/4.3.15",
       "hashPath": "websocket.client.4.3.15.nupkg.sha512"
     },
-    "Z.EntityFramework.Extensions/4.0.81": {
+    "Z.EntityFramework.Extensions/4.0.82": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xag4DsuKOtypHi4X9tkRIPj0iLAqZQTbs3FH2J1RHlVl9Hn5+7K3X3bnQCoRvIsxmMkZGwwSD27FVivmbfJ2ng==",
-      "path": "z.entityframework.extensions/4.0.81",
-      "hashPath": "z.entityframework.extensions.4.0.81.nupkg.sha512"
+      "sha512": "sha512-k+LqR12IkxoKx08JbGkzrsLULudgwiRQLycedsF/KDs04n22bUcAsghnzxiKORdxUW/fdrGBPWhoYSfrVCtUDg==",
+      "path": "z.entityframework.extensions/4.0.82",
+      "hashPath": "z.entityframework.extensions.4.0.82.nupkg.sha512"
     },
     "System.Reactive.Reference/4.3.0.0": {
       "type": "reference",

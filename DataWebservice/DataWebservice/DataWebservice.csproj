@@ -26,7 +26,7 @@
     <PackageReference Include="System.Net.WebSockets" Version="4.3.0" />
     <PackageReference Include="System.Net.WebSockets.Client" Version="4.3.2" />
     <PackageReference Include="Websocket.Client" Version="4.3.15" />
-    <PackageReference Include="Z.EntityFramework.Extensions" Version="4.0.81" />
+    <PackageReference Include="Z.EntityFramework.Extensions" Version="4.0.82" />
   </ItemGroup>
 
   <ItemGroup>

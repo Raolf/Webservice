@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7+L8ibvMgHshh0vSBGYaADo9GzwKDwlqfhZL74xO2zloz907+bwUMyUUApTGiMenmrp490afamJWXkIv+MpQVQ==",
+  "dgSpecHash": "68hEN181HjqkR1A0HB5pFt0Ul/SIU7AEcHvxin0Hb0UNMxttG/iEmJWHs1ZFabCKO+c05G5IhjP1SEtoQse5Mw==",
   "success": true,
   "projectFilePath": "C:\\Users\\oscar\\Documents\\GitHub\\Webservice\\DataWebservice\\DataWebservice\\DataWebservice.csproj",
   "expectedPackageFiles": [
@@ -226,7 +226,7 @@
     "C:\\Users\\oscar\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\oscar\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
     "C:\\Users\\oscar\\.nuget\\packages\\websocket.client\\4.3.15\\websocket.client.4.3.15.nupkg.sha512",
-    "C:\\Users\\oscar\\.nuget\\packages\\z.entityframework.extensions\\4.0.81\\z.entityframework.extensions.4.0.81.nupkg.sha512"
+    "C:\\Users\\oscar\\.nuget\\packages\\z.entityframework.extensions\\4.0.82\\z.entityframework.extensions.4.0.82.nupkg.sha512"
   ],
   "logs": []
 }
