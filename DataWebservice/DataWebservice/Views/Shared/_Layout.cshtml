@@ -1,4 +1,5 @@
-﻿
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+
 
 
 <!DOCTYPE html>
@@ -9,6 +10,7 @@
     <title>@ViewData["Title"] - DataWebservice</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
     <header>

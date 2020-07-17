@@ -15,8 +15,11 @@ using Microsoft.AspNetCore.Identity;
 using DataWebservice.Models;
 
 using Microsoft.AspNetCore.Authentication.OAuth;
-using Microsoft.Owin.Security.OAuth;
+//using Microsoft.Owin.Security.OAuth;
 using Microsoft.AspNetCore.Http;
+using Microsoft.ApplicationInsights.DependencyCollector;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.AspNetCore.Server.IIS;
 
 namespace DataWebservice
 {
@@ -29,13 +32,20 @@ namespace DataWebservice
 
         public IConfiguration Configuration { get; }
 
+
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
+            //depModule.Initialize(TelemetryConfiguration.Active);
+
             services.AddControllersWithViews();
 
             services.AddDbContext<DataWebserviceContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DataWebserviceContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnectionString")));
         
             services.AddMvc();
             services.AddRazorPages();
@@ -46,6 +56,9 @@ namespace DataWebservice
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<DataWebserviceContext>();
+            
+            services.AddApplicationInsightsTelemetry();
+
 
 
             /*
@@ -89,6 +102,12 @@ namespace DataWebservice
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            //using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            //{
+            //    scope.ServiceProvider.GetRequiredService<DataWebserviceContext>().Database.Migrate();
+            //}
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

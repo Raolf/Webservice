@@ -26,13 +26,11 @@ namespace DataWebservice.Data
         {
             //Truncate Tables for a clean start
             await _context.Database.ExecuteSqlRawAsync("truncate table FactTable");
-            await _context.Database.ExecuteSqlRawAsync("truncate table DataDim");
             await _context.Database.ExecuteSqlRawAsync("truncate table FactTable");
             await _context.Database.ExecuteSqlRawAsync("truncate table RoomDim");
             await _context.Database.ExecuteSqlRawAsync("truncate table ServoDim");
             await _context.Database.ExecuteSqlRawAsync("truncate table UserDim");
 
-            ExtractData();
             ExtractDate();
             ExtractRoom();
             ExtractServo();
@@ -46,7 +44,6 @@ namespace DataWebservice.Data
             {
 
                 //Load data into stage
-                ExtractData();
                 ExtractDate();
                 ExtractRoom();
                 ExtractServo();
@@ -56,31 +53,6 @@ namespace DataWebservice.Data
 
         }
 
-
-
-        public void ExtractData()
-        {
-            var sensorDataList = _context.Data.ToList();
-            var dataList = new List<DataDim>();
-            foreach (var data in sensorDataList)
-            {
-
-                //var room = _context.Room.FirstOrDefault(r => r.RoomID == data.RoomID);
-
-                var Data = new DataDim
-                {
-                    M_ID = 0,
-                    DataID = 0,
-                    Humidity = data.humidity,
-                    CO2 = data.CO2,
-                    Temperature = data.temperature         
-                };
-                dataList.Add(Data);
-            }
-            _context.SaveChanges();
-            //_context.FactTable.BulkInsert(dataList);
-          
-        }
 
         public void ExtractDate()
         {
@@ -184,7 +156,7 @@ namespace DataWebservice.Data
             var factList = new List<FactTable>();
             foreach (var fact in factData)
             {
-
+                var data = _context.Data.FirstOrDefault(r => r.sensorID == fact.sensorID);
                 var Fact = new FactTable
                 {
                     UniqueID = 0,
@@ -192,7 +164,10 @@ namespace DataWebservice.Data
                     R_ID = 0,
                     S_ID = 0,
                     U_ID = 0,
-                    Servosetting = fact.servoSetting
+                    Servosetting = fact.servoSetting,
+                    Humidity = data.humidity,
+                    CO2 = data.CO2,
+                    Temperature = data.temperature
                 };
                 factList.Add(Fact);
             }

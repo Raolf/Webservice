@@ -25,7 +25,7 @@ namespace DataWebservice
                 try
                 {
                     var context = services.GetRequiredService<DataWebserviceContext>();
-                    DbInitializer.Initialize(context);
+                    //DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {

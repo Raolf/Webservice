@@ -70,8 +70,6 @@ namespace DataWebservice.Data
 
             modelBuilder.Entity<FactTable>().HasKey(ft => ft.UniqueID);
 
-            modelBuilder.Entity<DataDim>().HasKey(da => da.M_ID);
-
             modelBuilder.Entity<DateDim>().HasKey(de => de.D_ID);
 
             modelBuilder.Entity<RoomDim>().HasKey(rd => rd.R_ID);
@@ -90,7 +88,6 @@ namespace DataWebservice.Data
         public DbSet<DataWebservice.Models.User> User { get; set; }
 
         public DbSet<FactTable> FactTable { get; set; }
-        public DbSet<DateDim> DataDim { get; set; }
         public DbSet<DateDim> DateDim { get; set; }
         public DbSet<RoomDim> RoomDim { get; set; }
         public DbSet<ServoDim> ServoDim { get; set; }
