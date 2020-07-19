@@ -454,3 +454,6 @@ C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debu
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.csproj.CopyComplete
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.pdb
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Server.Kestrel.Https.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.csprojAssemblyReference.cache

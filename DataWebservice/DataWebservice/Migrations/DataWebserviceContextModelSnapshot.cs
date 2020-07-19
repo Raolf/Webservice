@@ -36,6 +36,9 @@ namespace DataWebservice.Migrations
                     b.Property<int>("humidity")
                         .HasColumnType("int");
 
+                    b.Property<string>("sensorEUID")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("temperature")
                         .HasColumnType("int");
 
@@ -83,6 +86,9 @@ namespace DataWebservice.Migrations
 
                     b.Property<int>("roomID")
                         .HasColumnType("int");
+
+                    b.Property<string>("sensorEUID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("servoSetting")
                         .HasColumnType("int");
