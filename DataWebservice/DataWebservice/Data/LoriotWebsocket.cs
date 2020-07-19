@@ -10,7 +10,7 @@ namespace DataWebservice.Data
 {
     public class LoriotWebsocket
     {
-        DataWebserviceContext context;
+        DataWebserviceContext context = new DataWebserviceContext();
         Uri uri = new Uri("wss://iotnet.teracom.dk/app?token=vnoS7QAAABFpb3RuZXQudGVyYWNvbS5ka7A2D2ki2C8DUDFO6UOff4g=");
         WebsocketClient clientWS;
         CancellationTokenSource CTSource = new CancellationTokenSource();
@@ -57,9 +57,10 @@ namespace DataWebservice.Data
                     HexIntoData(loraData.data, data); //LoraData.data is a hex string, data is the webservices data class.
                     data.timestamp = new DateTime(1970, 1, 1, 2, 0, 0, DateTimeKind.Local).AddSeconds((double)loraData.ts / 1000);//Could be improved.
                     //SensorID not being set, String value cannot be converted to int.
-                    //data.sensorID = loraData.EUI;
+                    data.sensorEUID = loraData.EUI;
 
                     //missing insert of data object into database.
+                    context.Add(data);
                 }
                 else
                 {

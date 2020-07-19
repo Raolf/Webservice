@@ -179,8 +179,85 @@ namespace DataWebservice.Data
             //_context.FactTable.BulkInsert(factList);
 
         }
+        public void TransformData()
+        {
+            var factList = _context.FactTable.ToList();
+            foreach (FactTable data in factList) {
+                if (data.Humidity == null) {
+                    data.Humidity = 0;
+                }
+                if (data.CO2 == null) { 
+                    data.CO2 = 0;
+                }
+                if (data.Temperature == null) {
+                    data.Temperature = 0;
+                }
+            }
+        }
+        public void TransformRoom() {
+            var roomList = _context.RoomDim.ToList();
+            foreach (RoomDim room in roomList) {
+                if (room.RoomID == null) {
+                    room.RoomID = 0;
+                }
+                if (room.Name == null) {
+                    room.Name = "NOVALUE";
+                }
+            }
+        }
 
-
-
+        public void TransformUser()
+        {
+            var userList = _context.UserDim.ToList();
+            foreach (UserDim user in userList)
+                {
+                    if (user.UserID == null)
+                    {
+                        user.UserID = 0;
+                    }
+                    if (user.DisplayName == null)
+                    {
+                        user.DisplayName = "NOVALUE";
+                    }
+                    if (user.Admin == null)
+                    {
+                        user.Admin = false;
+                    }
+                }
+            }
+        public void transformServo()
+        {
+            var servoList = _context.ServoDim.ToList();
+            foreach (ServoDim servo in servoList)
+            {
+                if (servo.SensorID == null)
+                {
+                    servo.SensorID = 0;
+                }
+                //servo.SecondsSinceSet = Datetime.now - _context.DB.GetSensor(Stage_Servo.S_ID).GetSensorLog().GetLastItem();
+                //servo.HoursSinceSet = Math.Round((Decimal) (servo.SecondsSinceSet/3600));
+                //servo.DaysSinceSet = Math.Round(servo.HoursSinceSet / 24);
+            }
+        }
     }
+        
+
+        //foreach(Stage_DateDim in context.DB.Stage_DateDim){
+        //  
+        //  Datetime timestampe = Context.DB.GetDate(Stage_DataDim.D_ID).GetTimestamp();
+        //  Stage_DataDim.Year = timestamp.Year();
+        //  Stage_DataDim.Month = timestamp.Month();
+        //  Stage_DataDim.Day = timestamp.DayOfMonth();
+        //  Stage_DataDim.Minute = timestamp.MinuteOfDay();
+        //  Stage_DataDim.Seconds = timestamp.Second();
+        //  Stage_DataDim.WeekDay = timestamp.DayOfWeek();
+        //  Stage_DataDim.MonthName = timestamp.Month().Name;
+        //  Stage_DataDim.Holiday = timestamp.isHoliday();//Need Library for this.
+        //}
+
+
+
+    //SecondSsinceSet = data.Timestamp.seconds-sensorLog.Timestamp.seconds;
+    //HoursSinceSet = data.Timestamp.hours-sensorLog.Timestamp.hours;
+    //DaysSince = data.Timestamp.hours-sensorLog.Timestamp.hours
 }

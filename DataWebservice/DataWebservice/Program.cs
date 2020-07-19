@@ -15,8 +15,6 @@ namespace DataWebservice
     {
         public static void Main(string[] args)
         {
-            LoriotWebsocket lws = new LoriotWebsocket();
-
             var host = CreateHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope())
@@ -35,6 +33,9 @@ namespace DataWebservice
             }
 
             host.Run();
+            
+            LoriotWebsocket lws = new LoriotWebsocket();
+            
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

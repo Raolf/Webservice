@@ -16,7 +16,7 @@ namespace DataWebservice.Models
         public int temperature { get; set; }
 
         public int sensorID { get; set; }
-
+        public string sensorEUID{ get; set; }
         public Sensor sensor { get; set; }
 
     }
