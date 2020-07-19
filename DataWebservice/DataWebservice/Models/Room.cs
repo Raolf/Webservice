@@ -13,7 +13,8 @@ namespace DataWebservice.Models
         public int roomID { get; set; }
         public string roomName { get; set; }
 
-        public int userID { get; set; }
-        public User user { get; set; }
+        public List<RoomAccess> roomAccess { get; set;}
+
+        public List<Sensor> sensors { get; set; }
     }
 }

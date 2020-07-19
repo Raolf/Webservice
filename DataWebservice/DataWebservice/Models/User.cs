@@ -17,6 +17,6 @@ namespace DataWebservice.Models
 
         public Boolean isAdmin { get; set; }
 
-        public ICollection<Room> room { get; set; }
+        public List<RoomAccess> roomAccess { get; set; }
     }
 }

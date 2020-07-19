@@ -139,10 +139,10 @@ namespace DataWebservice.Controllers
                 return NotFound();
             }
 
-            //var roomAccess = await _context.RoomAccess
-            //    .Include(r => r.room)
-            //    .Include(r => r.user)
-            //    .FirstOrDefaultAsync(m => m.roomID == id);
+            roomAccess = await _context.RoomAccess
+                .Include(r => r.room)
+                .Include(r => r.user)
+            .FirstOrDefaultAsync(m => m.roomID == id);
             if (roomAccess == null)
             {
                 return NotFound();

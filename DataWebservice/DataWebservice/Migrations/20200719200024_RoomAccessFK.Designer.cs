@@ -4,14 +4,16 @@ using DataWebservice.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataWebservice.Migrations
 {
     [DbContext(typeof(DataWebserviceContext))]
-    partial class DataWebserviceContextModelSnapshot : ModelSnapshot
+    [Migration("20200719200024_RoomAccessFK")]
+    partial class RoomAccessFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -506,7 +508,7 @@ namespace DataWebservice.Migrations
             modelBuilder.Entity("DataWebservice.Models.Sensor", b =>
                 {
                     b.HasOne("DataWebservice.Models.Room", "room")
-                        .WithMany("sensors")
+                        .WithMany()
                         .HasForeignKey("roomID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

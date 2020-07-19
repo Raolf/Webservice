@@ -32,14 +32,14 @@ namespace DataWebservice.Data
             modelBuilder.Entity<RoomAccess>().HasKey(ra => new { ra.roomID, ra.userID });
 
             modelBuilder.Entity<RoomAccess>()
-                .HasOne(u => u.user);
-            //.WithMany(ra => ra.roomAcces)
-            //.HasForeignKey(r => r.userID);
+                .HasOne(u => u.user)
+                .WithMany(ra => ra.roomAccess)
+                .HasForeignKey(r => r.userID);
 
             modelBuilder.Entity<RoomAccess>()
-                .HasOne(r => r.room);
-                //.WithMany(ra => ra.roomAccess)
-                //.HasForeignKey(r => r.roomID);
+                .HasOne(r => r.room)
+                .WithMany(ra => ra.roomAccess)
+                .HasForeignKey(r => r.roomID);
 
 
 
