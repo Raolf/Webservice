@@ -15,7 +15,7 @@ namespace DataWebservice.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.5")
+                .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -28,6 +28,9 @@ namespace DataWebservice.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("CO2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("dataID")
                         .HasColumnType("int");
 
                     b.Property<int>("humidity")
@@ -48,10 +51,15 @@ namespace DataWebservice.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("name")
+                    b.Property<string>("roomName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("userID")
+                        .HasColumnType("int");
+
                     b.HasKey("roomID");
+
+                    b.HasIndex("userID");
 
                     b.ToTable("Room");
                 });
@@ -121,42 +129,18 @@ namespace DataWebservice.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("admin")
+                    b.Property<string>("displayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isAdmin")
                         .HasColumnType("bit");
 
-                    b.Property<int>("password")
-                        .HasColumnType("int");
-
-                    b.Property<string>("username")
+                    b.Property<string>("password")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("userID");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("DataWebservice.Models.Warehousing.Stage.DataDim", b =>
-                {
-                    b.Property<int>("M_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CO2")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DataID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Humidity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Temperature")
-                        .HasColumnType("int");
-
-                    b.HasKey("M_ID");
-
-                    b.ToTable("DataDim");
                 });
 
             modelBuilder.Entity("DataWebservice.Models.Warehousing.Stage.DateDim", b =>
@@ -205,7 +189,13 @@ namespace DataWebservice.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CO2")
+                        .HasColumnType("int");
+
                     b.Property<int>("D_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Humidity")
                         .HasColumnType("int");
 
                     b.Property<int>("R_ID")
@@ -215,6 +205,9 @@ namespace DataWebservice.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Servosetting")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Temperature")
                         .HasColumnType("int");
 
                     b.Property<int>("U_ID")
@@ -500,16 +493,25 @@ namespace DataWebservice.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("DataWebservice.Models.Room", b =>
+                {
+                    b.HasOne("DataWebservice.Models.User", "user")
+                        .WithMany("room")
+                        .HasForeignKey("userID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("DataWebservice.Models.RoomAccess", b =>
                 {
                     b.HasOne("DataWebservice.Models.Room", "room")
-                        .WithMany("roomAccess")
+                        .WithMany()
                         .HasForeignKey("roomID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DataWebservice.Models.User", "user")
-                        .WithMany("roomAccess")
+                        .WithMany()
                         .HasForeignKey("userID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -518,7 +520,7 @@ namespace DataWebservice.Migrations
             modelBuilder.Entity("DataWebservice.Models.Sensor", b =>
                 {
                     b.HasOne("DataWebservice.Models.Room", "room")
-                        .WithMany("sensors")
+                        .WithMany()
                         .HasForeignKey("roomID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

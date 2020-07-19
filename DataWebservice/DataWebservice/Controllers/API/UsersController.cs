@@ -36,7 +36,7 @@ namespace DataWebservice.Controllers.API
 
             var roomAccess = await _context.RoomAccess.Where(r => r.userID == user.userID).Include(r => r.room).ToListAsync();
 
-            user.roomAccess = roomAccess;
+            //user.roomAccess = roomAccess;
             
 
             if (user == null)
