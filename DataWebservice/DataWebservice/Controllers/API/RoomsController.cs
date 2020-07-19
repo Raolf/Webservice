@@ -34,10 +34,12 @@ namespace DataWebservice.Controllers.API
         public async Task<ActionResult<Room>> GetRoom(int id)
         {
             var room = await _context.Room.Where(r => r.roomID == id)
-                .Include(r => r.sensors)
-                .ThenInclude(s => s.data)
-                .Include(r => r.roomAccess)
-                .ThenInclude(ra => ra.user)
+                //.Include(r => r.sensors)
+                //.ThenInclude(s => s.data)
+                //.Include(r => r.roomAccess)
+                //.ThenInclude(ra => ra.user)
+                .Include(u => u.user)
+                .ThenInclude(r => r.room)
                 .FirstOrDefaultAsync();
             //.FindAsync(id);
 

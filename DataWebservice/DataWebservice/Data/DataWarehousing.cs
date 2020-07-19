@@ -95,7 +95,7 @@ namespace DataWebservice.Data
                 {
                     R_ID = 0,
                     RoomID = room.roomID,
-                    Name = room.name
+                    Name = room.roomName
 
                  };
                 roomList.Add(Room);
@@ -141,8 +141,8 @@ namespace DataWebservice.Data
 
                     U_ID = 0,
                     UserID = user.userID,
-                    DisplayName = user.username,
-                    Admin = user.admin
+                    DisplayName = user.displayName,
+                    Admin = user.isAdmin
 
                 };
                 userList.Add(User);

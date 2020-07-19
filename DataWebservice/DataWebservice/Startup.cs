@@ -14,8 +14,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using DataWebservice.Models;
 
-using Microsoft.AspNetCore.Authentication.OAuth;
-using Microsoft.Owin.Security.OAuth;
+//using Microsoft.AspNetCore.Authentication.OAuth;
+//using Microsoft.Owin.Security.OAuth;
 using Microsoft.AspNetCore.Http;
 
 namespace DataWebservice
