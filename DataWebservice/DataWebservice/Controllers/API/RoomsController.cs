@@ -36,6 +36,8 @@ namespace DataWebservice.Controllers.API
             var room = await _context.Room.Where(r => r.roomID == id)
                 .Include(r => r.sensors)
                 .ThenInclude(s => s.data)
+                .Include(r => r.sensors)
+                .ThenInclude(sl => sl.sensorLog)
                 .Include(r => r.roomAccess)
                 .ThenInclude(ra => ra.user)
                 .FirstOrDefaultAsync();

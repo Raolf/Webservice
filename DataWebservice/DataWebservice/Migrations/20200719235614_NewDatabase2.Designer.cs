@@ -4,14 +4,16 @@ using DataWebservice.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataWebservice.Migrations
 {
     [DbContext(typeof(DataWebserviceContext))]
-    partial class DataWebserviceContextModelSnapshot : ModelSnapshot
+    [Migration("20200719235614_NewDatabase2")]
+    partial class NewDatabase2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
