@@ -23,14 +23,21 @@ namespace DataWebservice.Controllers.API
 
         // GET: api/Data
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Models.Data>>> GetData()
+        public async Task<ActionResult<IEnumerable<DataDTO>>> GetData()
         {
-            return await _context.Data.ToListAsync();
+            var dataList = await _context.Data.ToListAsync();
+            var DTOList = new List<DataDTO>();
+            foreach (Models.Data data in dataList)
+            {
+                DTOList.Add(data.DataToDTO());
+            }
+
+            return DTOList;
         }
 
         // GET: api/Data/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Models.Data>> GetData(int id)
+        public async Task<ActionResult<Models.DataDTO>> GetData(int id)
         {
             var data = await _context.Data.FindAsync(id);
 
@@ -39,7 +46,7 @@ namespace DataWebservice.Controllers.API
                 return NotFound();
             }
 
-            return data;
+            return data.DataToDTO();
         }
 
         // PUT: api/Data/5

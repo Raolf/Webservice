@@ -19,5 +19,16 @@ namespace DataWebservice.Models
 
         public ICollection<SensorLog> sensorLog { get; set; }
 
+        public SensorDTO ToDTO()
+        {
+            SensorDTO sensorDTO = new SensorDTO();
+            sensorDTO.sensorID = this.sensorID;
+            sensorDTO.servosetting = this.servoSetting;
+            foreach (Data data in this.data)
+            {
+                sensorDTO.data.Add(data.DataToDTO());
+            }
+            return sensorDTO;
+        }
     }
 }

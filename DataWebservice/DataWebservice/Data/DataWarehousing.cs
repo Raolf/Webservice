@@ -228,32 +228,28 @@ namespace DataWebservice.Data
         public void transformServo()
         {
             var servoList = _context.ServoDim.ToList();
+            ServoDim servoTemp = null;
             foreach (ServoDim servo in servoList)
             {
+                
                 if (servo.SensorID == null)
                 {
                     servo.SensorID = 0;
                 }
-                //servo.SecondsSinceSet = Datetime.now - _context.DB.GetSensor(Stage_Servo.S_ID).GetSensorLog().GetLastItem();
-                //servo.HoursSinceSet = Math.Round((Decimal) (servo.SecondsSinceSet/3600));
-                //servo.DaysSinceSet = Math.Round(servo.HoursSinceSet / 24);
+                if (servoTemp != null)
+                {
+                    //servo.SecondsSinceSet = servo. - _context.DB.GetSensor(Stage_Servo.S_ID).GetSensorLog().GetLastItem();
+                } else
+                {
+                    servo.SecondsSinceSet = 0;
+                }
+                
+                //servo.HoursSinceSet = (int)Math.Round((float) (servo.SecondsSinceSet/3600));
+                //servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
+                servoTemp = servo;
             }
         }
     }
-        
-
-        //foreach(Stage_DateDim in context.DB.Stage_DateDim){
-        //  
-        //  Datetime timestampe = Context.DB.GetDate(Stage_DataDim.D_ID).GetTimestamp();
-        //  Stage_DataDim.Year = timestamp.Year();
-        //  Stage_DataDim.Month = timestamp.Month();
-        //  Stage_DataDim.Day = timestamp.DayOfMonth();
-        //  Stage_DataDim.Minute = timestamp.MinuteOfDay();
-        //  Stage_DataDim.Seconds = timestamp.Second();
-        //  Stage_DataDim.WeekDay = timestamp.DayOfWeek();
-        //  Stage_DataDim.MonthName = timestamp.Month().Name;
-        //  Stage_DataDim.Holiday = timestamp.isHoliday();//Need Library for this.
-        //}
 
 
 

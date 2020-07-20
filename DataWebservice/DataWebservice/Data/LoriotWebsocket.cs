@@ -56,7 +56,6 @@ namespace DataWebservice.Data
                     Models.Data data = new Models.Data();
                     HexIntoData(loraData.data, data); //LoraData.data is a hex string, data is the webservices data class.
                     data.timestamp = new DateTime(1970, 1, 1, 2, 0, 0, DateTimeKind.Local).AddSeconds((double)loraData.ts / 1000);//Could be improved.
-                    //SensorID not being set, String value cannot be converted to int.
                     data.sensorEUID = loraData.EUI;
 
                     //missing insert of data object into database.

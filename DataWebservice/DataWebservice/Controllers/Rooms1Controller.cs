@@ -40,7 +40,7 @@ namespace DataWebservice.Controllers
                 return NotFound();
             }
 
-            return View(room);
+            return View(room.ToDTO());
         }
 
         // GET: Rooms1/Create
