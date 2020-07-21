@@ -8,6 +8,7 @@ using System.Globalization;
 using DataWebservice.Models.Warehousing.Stage;
 using DataWebservice.Models;
 using System.Runtime;
+using DataWebservice.Models.Warehousing.DW;
 
 namespace DataWebservice.Data
 {
@@ -49,12 +50,39 @@ namespace DataWebservice.Data
                 ExtractServo();
                 ExtractUser();
                 ExtractFactTable();
+
+                //Transform
+
+                //Load
+                ProcessDateDim();
+                ProcessRoomDim();
+                ProcessUserDim();
+                ProcessServoDim();
+                LoadData();
             }
 
         }
 
 
+        public void LoadData()
+        {
+            var factData = _context.Sensor.ToList();
+            var factList = new List<DWFactTable>();
+            foreach (var fact in factData)
+            {
+                var data = _context.Data.FirstOrDefault(r => r.sensorID == fact.sensorID);
 
+                var Fact = new DWFactTable
+                {
+                    Servosetting = fact.servoSetting,
+                    Humidity = data.humidity,
+                    CO2 = data.CO2,
+                    Temperature = data.temperature
+                };
+                factList.Add(Fact);
+            }
+            _context.SaveChanges();
+        }
 
 
         public void ExtractDate()
@@ -180,7 +208,95 @@ namespace DataWebservice.Data
 
         }
 
+        public void ProcessDateDim()
+        {
+            var dates = _context.DWDateDim.ToList();
 
+            var max = _context.Data.Max(sd => sd.timestamp).Date;
+            var min = _context.Data.Min(sd => sd.timestamp).Date;
+            var temp = min;
+
+            var dateList = new List<DWDateDim>();
+            var cultureInfo = new CultureInfo("en-US");
+            var calendar = cultureInfo.Calendar;
+
+
+            while (temp <= max)
+            {
+                var date = new DWDateDim
+                {
+                    Day = temp.Day,
+                    Month = temp.Month,
+                    Monthname = cultureInfo.DateTimeFormat.GetAbbreviatedMonthName(temp.Month),
+                    Weekday = Enum.GetName(typeof(DayOfWeek), temp.DayOfWeek),
+                    Year = temp.Year,
+                    Hour = temp.Hour,
+                    Minute = temp.Minute,
+                    Second = temp.Second
+                };
+                dateList.Add(date);
+                temp = temp.AddDays(1);
+            }
+            _context.SaveChanges();
+        }
+
+        public void ProcessUserDim()
+        {
+            var users = _context.DWUserDim.ToList();
+            var userList = new List<DWUserDim>();
+            
+            foreach (var user in users)
+            {
+
+                var User = new DWUserDim
+                {
+                    UserID = user.UserID,
+                    DisplayName = user.DisplayName,
+                    Admin = user.Admin
+                };
+                userList.Add(User);
+            }
+            _context.SaveChanges();
+        }
+
+        public void ProcessServoDim()
+        {
+            var list = _context.Sensor.ToList();
+            var servoList = new List<DWServoDim>();
+            foreach (var servo in list)
+            {
+
+                var Servo = new DWServoDim
+                {
+                    SensorID = servo.sensorID,
+                    PD_ID = 0,
+                    DaysSinceSet = 0,
+                    HoursSinceSet = 0,
+                    SecondsSinceSet = 0
+
+                };
+                servoList.Add(Servo);
+            }
+            _context.SaveChanges();
+        }
+        
+        public void ProcessRoomDim()
+        {
+            var list = _context.Room.ToList();
+            var roomList = new List<DWRoomDim>();
+            foreach (var room in list)
+            {
+
+                var Room = new DWRoomDim
+                {
+                    RoomID = room.roomID,
+                    Name = room.roomName
+
+                };
+                roomList.Add(Room);
+            }
+            _context.SaveChanges();
+        }
 
     }
 }
