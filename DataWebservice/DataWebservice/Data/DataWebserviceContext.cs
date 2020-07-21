@@ -7,6 +7,7 @@ using DataWebservice.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using DataWebservice.Models.Warehousing.Stage;
+using DataWebservice.Models.Warehousing.DW;
 
 namespace DataWebservice.Data
 {
@@ -72,7 +73,7 @@ namespace DataWebservice.Data
 
             modelBuilder.Entity<User>().ToTable("User");
 
-
+            //Stage
             modelBuilder.Entity<FactTable>().HasKey(ft => ft.UniqueID);
 
             modelBuilder.Entity<DateDim>().HasKey(de => de.D_ID);
@@ -82,6 +83,17 @@ namespace DataWebservice.Data
             modelBuilder.Entity<ServoDim>().HasKey(sd => sd.S_ID);
 
             modelBuilder.Entity<UserDim>().HasKey(ud => ud.U_ID);
+
+            //DW 
+            modelBuilder.Entity<DWFactTable>().HasKey(ft => ft.DataKey);
+
+            modelBuilder.Entity<DWDateDim>().HasKey(dd => dd.D_ID);
+
+            modelBuilder.Entity<DWRoomDim>().HasKey(rd => rd.R_ID);
+
+            modelBuilder.Entity<DWServoDim>().HasKey(sd => sd.S_ID);
+
+            modelBuilder.Entity<DWUserDim>().HasKey(ud => ud.U_ID);
 
         }
 
@@ -97,6 +109,12 @@ namespace DataWebservice.Data
         public DbSet<RoomDim> RoomDim { get; set; }
         public DbSet<ServoDim> ServoDim { get; set; }
         public DbSet<UserDim> UserDim { get; set; }
+
+        public DbSet<DWFactTable> DWFactTable { get; set; }
+        public DbSet<DWDateDim> DWDateDim { get; set; }
+        public DbSet<DWRoomDim> DWRoomDim { get; set; }
+        public DbSet<DWServoDim> DWServoDim { get; set; }
+        public DbSet<DWUserDim> DWUserDim { get; set; }
 
     }
 }
