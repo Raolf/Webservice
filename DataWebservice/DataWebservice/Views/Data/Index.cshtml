@@ -13,16 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.sensorID)
+                @*@Html.DisplayNameFor(model => model.sensorID)*@
+                @Html.DisplayName("SensorID")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.humidity)
+                @*@Html.DisplayNameFor(model => model.humidity)*@
+                @Html.DisplayName("Humidity")
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CO2)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.temperature)
+                @*@Html.DisplayNameFor(model => model.temperature)*@
+                @Html.DisplayName("Temperature")
             </th>
             <th></th>
         </tr>
@@ -43,9 +46,9 @@
                 @Html.DisplayFor(modelItem => item.temperature)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
             </td>
         </tr>
 }
