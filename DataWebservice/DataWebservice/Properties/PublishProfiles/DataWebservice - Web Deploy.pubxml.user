@@ -8,4 +8,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfRVtizKgMk2cbVPynkT8WAAAAAACAAAAAAAQZgAAAAEAACAAAADWDV+x7kVf7cVKxkDooOX0imBzvyFK5xJPq5lY/yk49AAAAAAOgAAAAAIAACAAAAB1Po8fWJkuyJTXUYK9/LtmRa3z+m0b+9UCH9e0h6tDz4AAAACnob6i17nDc+eqWgs+8u+ft7ShBUMgneeGvC3NnG6v3/mOFNsZyGGi57JEQk0T85Drc2cQbAuw8LMc7lN1mbt6KV9R6O/XrtG4jHI5/PlzFDU7gnJGomVefXwc4YvTq/e/PUAcAMUfKldw2f7scr+gZEqFBwT7DrlariY3ECOBM0AAAAAw/Pyu4/FEmCeCMC6IXEB9Usj6V2XVJMg5Otx00xXzwTaXDkOn4eYA7Vpp9miARJAtcunubSBmllkIfx2v7izw</EncryptedPassword>
   </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DataWebserviceContext">
+      <Value>Data Source=tcp:datawebservicedbserver.database.windows.net,1433%3bInitial Catalog=DataWebservice_db%3bUser Id=oscar%40datawebservicedbserver%3bPassword=VIA123</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
 </Project>

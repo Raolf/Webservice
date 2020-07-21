@@ -36,6 +36,7 @@ namespace DataWebservice.Controllers
 
             var sensor = await _context.Sensor
                 .Include(s => s.room)
+                .Include(s=>s.data)
                 .FirstOrDefaultAsync(m => m.sensorID == id);
             if (sensor == null)
             {
@@ -132,7 +133,7 @@ namespace DataWebservice.Controllers
 
             var sensor = await _context.Sensor
                 .Include(s => s.room)
-                .FirstOrDefaultAsync(m => m.sensorID == id);
+                .FirstOrDefaultAsync(s => s.sensorID == id);
             if (sensor == null)
             {
                 return NotFound();
@@ -154,7 +155,7 @@ namespace DataWebservice.Controllers
 
         private bool SensorExists(int id)
         {
-            return _context.Sensor.Any(e => e.sensorID == id);
+            return _context.Sensor.Any(s => s.sensorID == id);
         }
     }
 }

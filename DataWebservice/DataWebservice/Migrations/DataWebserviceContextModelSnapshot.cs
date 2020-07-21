@@ -36,6 +36,9 @@ namespace DataWebservice.Migrations
                     b.Property<int>("humidity")
                         .HasColumnType("int");
 
+                    b.Property<string>("sensorEUID")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("temperature")
                         .HasColumnType("int");
 
@@ -84,6 +87,9 @@ namespace DataWebservice.Migrations
                     b.Property<int>("roomID")
                         .HasColumnType("int");
 
+                    b.Property<string>("sensorEUID")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("servoSetting")
                         .HasColumnType("int");
 
@@ -97,11 +103,6 @@ namespace DataWebservice.Migrations
             modelBuilder.Entity("DataWebservice.Models.SensorLog", b =>
                 {
                     b.Property<int>("sensorID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("sensorID1")
                         .HasColumnType("int");
 
                     b.Property<bool>("servoSetting")
@@ -111,8 +112,6 @@ namespace DataWebservice.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("sensorID");
-
-                    b.HasIndex("sensorID1");
 
                     b.ToTable("SensorLog");
                 });
@@ -516,7 +515,7 @@ namespace DataWebservice.Migrations
                 {
                     b.HasOne("DataWebservice.Models.Sensor", "sensor")
                         .WithMany("sensorLog")
-                        .HasForeignKey("sensorID1")
+                        .HasForeignKey("sensorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

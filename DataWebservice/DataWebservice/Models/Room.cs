@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataWebservice.Models.apiDTOs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,5 +17,17 @@ namespace DataWebservice.Models
         public List<RoomAccess> roomAccess { get; set;}
 
         public List<Sensor> sensors { get; set; }
+
+        public RoomDTO ToDTO()
+        {
+            RoomDTO roomDTO = new RoomDTO();
+            roomDTO.roomID = this.roomID;
+            roomDTO.name = this.roomName;
+            foreach(Sensor sensor in this.sensors)
+            {
+                roomDTO.sensors.Add(sensor.ToDTO());
+            }
+            return roomDTO;
+        }
     }
 }

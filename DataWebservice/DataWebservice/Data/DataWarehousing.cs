@@ -207,6 +207,77 @@ namespace DataWebservice.Data
             //_context.FactTable.BulkInsert(factList);
 
         }
+        public void TransformData()
+        {
+            var factList = _context.FactTable.ToList();
+            foreach (FactTable data in factList) {
+                if (data.Humidity == null) {
+                    data.Humidity = 0;
+                }
+                if (data.CO2 == null) { 
+                    data.CO2 = 0;
+                }
+                if (data.Temperature == null) {
+                    data.Temperature = 0;
+                }
+            }
+        }
+        public void TransformRoom() {
+            var roomList = _context.RoomDim.ToList();
+            foreach (RoomDim room in roomList) {
+                if (room.RoomID == null) {
+                    room.RoomID = 0;
+                }
+                if (room.Name == null) {
+                    room.Name = "NOVALUE";
+                }
+            }
+        }
+
+        public void TransformUser()
+        {
+            var userList = _context.UserDim.ToList();
+            foreach (UserDim user in userList)
+                {
+                    if (user.UserID == null)
+                    {
+                        user.UserID = 0;
+                    }
+                    if (user.DisplayName == null)
+                    {
+                        user.DisplayName = "NOVALUE";
+                    }
+                    if (user.Admin == null)
+                    {
+                        user.Admin = false;
+                    }
+                }
+            }
+        public void transformServo()
+        {
+            var servoList = _context.ServoDim.ToList();
+            ServoDim servoTemp = null;
+            foreach (ServoDim servo in servoList)
+            {
+                
+                if (servo.SensorID == null)
+                {
+                    servo.SensorID = 0;
+                }
+                if (servoTemp != null)
+                {
+                    //servo.SecondsSinceSet = servo. - _context.DB.GetSensor(Stage_Servo.S_ID).GetSensorLog().GetLastItem();
+                } else
+                {
+                    servo.SecondsSinceSet = 0;
+                }
+                
+                //servo.HoursSinceSet = (int)Math.Round((float) (servo.SecondsSinceSet/3600));
+                //servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
+                servoTemp = servo;
+            }
+        }
+    }
 
         public void ProcessDateDim()
         {
@@ -298,5 +369,7 @@ namespace DataWebservice.Data
             _context.SaveChanges();
         }
 
-    }
+    //SecondSsinceSet = data.Timestamp.seconds-sensorLog.Timestamp.seconds;
+    //HoursSinceSet = data.Timestamp.hours-sensorLog.Timestamp.hours;
+    //DaysSince = data.Timestamp.hours-sensorLog.Timestamp.hours
 }

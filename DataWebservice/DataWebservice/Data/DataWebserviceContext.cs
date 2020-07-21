@@ -53,7 +53,12 @@ namespace DataWebservice.Data
 
 
 
-            modelBuilder.Entity<SensorLog>().HasKey(tl => tl.sensorID);
+            modelBuilder.Entity<SensorLog>().HasKey(sl => new { sl.sensorID});
+
+            modelBuilder.Entity<SensorLog>()
+                .HasOne(s => s.sensor)
+                .WithMany(sl => sl.sensorLog)
+                .HasForeignKey(s => s.sensorID);
 
 
             modelBuilder.Entity<Room>().ToTable("Room");

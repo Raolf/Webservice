@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DataWebservice.Data;
 using DataWebservice.Models;
 using Microsoft.EntityFrameworkCore.Internal;
+using DataWebservice.Models.apiDTOs;
 
 namespace DataWebservice.Controllers.API
 {
@@ -27,6 +28,13 @@ namespace DataWebservice.Controllers.API
         public async Task<ActionResult<IEnumerable<Room>>> GetRoom()
         {
             return await _context.Room.ToListAsync();
+            //var rooms = await _context.Room.ToListAsync();
+            /*List<RoomDTO> roomDTOs = new List<RoomDTO>();
+            foreach (Room room in rooms)
+            {
+                roomDTOs.Add(room.ToDTO());
+            }
+            return roomDTOs;*/
         }
 
         // GET: api/Rooms/5
@@ -36,6 +44,8 @@ namespace DataWebservice.Controllers.API
             var room = await _context.Room.Where(r => r.roomID == id)
                 .Include(r => r.sensors)
                 .ThenInclude(s => s.data)
+                .Include(r => r.sensors)
+                .ThenInclude(sl => sl.sensorLog)
                 .Include(r => r.roomAccess)
                 .ThenInclude(ra => ra.user)
                 .FirstOrDefaultAsync();

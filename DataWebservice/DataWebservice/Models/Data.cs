@@ -16,8 +16,19 @@ namespace DataWebservice.Models
         public int temperature { get; set; }
 
         public int sensorID { get; set; }
-
+        public string sensorEUID{ get; set; }
         public Sensor sensor { get; set; }
-
+        public DataDTO DataToDTO()
+        {
+            DataDTO dataDTO = new DataDTO();
+            dataDTO.CO2_ID = this.dataID;
+            dataDTO.HUM_ID = this.dataID;
+            dataDTO.TEMP_ID = this.dataID;
+            dataDTO.date = this.timestamp;
+            dataDTO.HUM_value = this.humidity;
+            dataDTO.CO2_value = this.CO2;
+            dataDTO.TEMP_value = this.temperature;
+            return dataDTO;
+        }
     }
 }
