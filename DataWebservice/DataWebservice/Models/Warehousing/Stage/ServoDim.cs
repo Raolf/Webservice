@@ -13,6 +13,7 @@ namespace DataWebservice.Models.Warehousing.Stage
         public int DaysSinceSet { get; set; }
         public int HoursSinceSet { get; set; }
         public int SecondsSinceSet { get; set; }
+        public DateTime Timestamp { get; set; }
 
     }
 }

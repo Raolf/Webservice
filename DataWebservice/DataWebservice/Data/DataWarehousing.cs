@@ -139,6 +139,7 @@ namespace DataWebservice.Data
             var servoList = new List<ServoDim>();
             foreach (var servo in ServoList)
             {
+                var sensorlog = _context.SensorLog.FirstOrDefault(r => r.sensorID == servo.sensorID);
 
                 var Servo = new ServoDim
                 {
@@ -147,7 +148,8 @@ namespace DataWebservice.Data
                     PD_ID = 0,
                     DaysSinceSet = 0,
                     HoursSinceSet = 0,
-                    SecondsSinceSet = 0
+                    SecondsSinceSet = 0,
+                    Timestamp = sensorlog.timestamp
 
                 };
                 servoList.Add(Servo);

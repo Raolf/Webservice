@@ -7,18 +7,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DataWebservice.Data;
 using DataWebservice.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
 
 namespace DataWebservice.Controllers.API
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
         private readonly DataWebserviceContext _context;
+        private IUserService _userService;
+
 
         public UsersController(DataWebserviceContext context)
         {
             _context = context;
+            IUserService userService;
+
         }
 
         // GET: api/Users
@@ -45,6 +52,22 @@ namespace DataWebservice.Controllers.API
             }
 
             return user;
+        }
+
+
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public IActionResult Authenticate([FromBody]AuthenticateModel model)
+        {
+            var user = _userService.Authenticate(model.Username, model.Password);
+
+            if (user == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(new
+            {
+                Id = user.userID,
+            });
         }
 
         // PUT: api/Users/5

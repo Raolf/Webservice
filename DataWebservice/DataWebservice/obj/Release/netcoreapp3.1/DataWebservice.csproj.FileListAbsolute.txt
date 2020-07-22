@@ -386,9 +386,6 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Rel
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\System.Reactive.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\System.Reactive.xml
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.csprojAssemblyReference.cache
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.csproj.CoreCompileInputs.cache
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.RazorAssemblyInfo.cache
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.RazorAssemblyInfo.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.AssemblyInfoInputs.cache
@@ -444,3 +441,13 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Rel
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Data\Delete.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Data\Details.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Data\Edit.cshtml.g.cs
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\System.Web.Mvc.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\System.Web.Razor.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\System.Web.Helpers.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\System.Web.WebPages.Razor.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\System.Web.WebPages.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.csproj.CoreCompileInputs.cache
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cache
