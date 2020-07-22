@@ -32,6 +32,7 @@ namespace DataWebservice
                 }
             }
             LoriotWebsocket lws = new LoriotWebsocket();
+            lws.LoriotWebsocketStart();
 
             host.Run();
             

@@ -18,7 +18,7 @@ namespace DataWebservice.Data
 
         public LoriotWebsocket()
         {
-            LoriotWebsocketStart();
+            //LoriotWebsocketStart();
         }
 
         public void LoriotWebsocketStart()
@@ -41,7 +41,6 @@ namespace DataWebservice.Data
             clientWS.ErrorReconnectTimeout = TimeSpan.FromSeconds(60);
 
             setupMessageRecieve(clientWS);
-            Console.WriteLine("Starting Client.\n");
             clientWS.Start();
             //Task.Run(() => Ping(clientWS));
             Console.WriteLine("Loriot Running.\n");
@@ -51,18 +50,17 @@ namespace DataWebservice.Data
         {
             client.MessageReceived.Subscribe(json =>
             {
-                Console.WriteLine("Message recieved\n");
+                Console.WriteLine("Message recieved.\n");
                 LoriotDTO loraData = JsonConvert.DeserializeObject<LoriotDTO>(json.ToString());
 
                 if (loraData.cmd == "rx")
                 {
-                    Models.Data data = new Models.Data();
-                    HexIntoData(loraData.data, data); //LoraData.data is a hex string, data is the webservices data class.
+                    Models.Data data = HexIntoData(loraData.data); //LoraData.data is a hex string, data is the webservices data class.
                     data.timestamp = new DateTime(1970, 1, 1, 2, 0, 0, DateTimeKind.Local).AddSeconds((double)loraData.ts / 1000);//Could be improved.
                     data.sensorEUID = loraData.EUI;
 
                     //missing insert of data object into database.
-                    context.Add(data);
+                    context.Data.Add(data);
                 }
                 else
                 {
@@ -108,17 +106,19 @@ namespace DataWebservice.Data
             return iAr;
         }
 
-        public void HexIntoData (String hex, Models.Data data)
+        public Models.Data HexIntoData (String hex)
         {
+            Models.Data data = new Models.Data();
             int [] dataArray = ByteToInt(HexToByte(hex));
             if (dataArray.Length < 4)
             {
                 Console.WriteLine("Message was too short, did not count 8 bytes");
-                return;
+                return null;
             }
             data.humidity = dataArray[0];
             data.temperature = dataArray[1];
             data.CO2 = dataArray[2];
+            return data;
         }
 
         public void SendMessage(Sensor sensor, string setting)
