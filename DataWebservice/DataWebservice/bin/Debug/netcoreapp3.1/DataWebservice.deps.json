@@ -15,7 +15,7 @@
     "allowUnsafe": false,
     "warningsAsErrors": false,
     "optimize": false,
-    "keyFile": "",
+    "keyFile": "client-1.local.csr",
     "emitEntryPoint": true,
     "xmlDoc": false,
     "debugType": "portable"

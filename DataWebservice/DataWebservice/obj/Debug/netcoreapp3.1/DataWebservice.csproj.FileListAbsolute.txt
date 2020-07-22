@@ -444,3 +444,4 @@ C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debu
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.pdb
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.csproj.CoreCompileInputs.cache
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.genruntimeconfig.cache
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\nunit.framework.dll

@@ -9,6 +9,7 @@ using DataWebservice.Data;
 using DataWebservice.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataWebservice.Controllers.API
 {
@@ -18,13 +19,13 @@ namespace DataWebservice.Controllers.API
     public class UsersController : ControllerBase
     {
         private readonly DataWebserviceContext _context;
-        private IUserService _userService;
 
+        //private IUserService _UserService;
 
-        public UsersController(DataWebserviceContext context)
+        public UsersController(DataWebserviceContext context/*, IUserService userService*/)
         {
             _context = context;
-            IUserService userService;
+            //_UserService = userService;
 
         }
 
@@ -59,7 +60,8 @@ namespace DataWebservice.Controllers.API
         [HttpPost("login")]
         public IActionResult Authenticate([FromBody]AuthenticateModel model)
         {
-            var user = _userService.Authenticate(model.Username, model.Password);
+            //var user = _UserService.Authenticate(model.displayName, model.password);
+            var user = Authenticate(model.displayName, model.password);
 
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
@@ -134,5 +136,43 @@ namespace DataWebservice.Controllers.API
         {
             return _context.User.Any(e => e.userID == id);
         }
+
+
+        public interface IUserService
+        {
+            User Authenticate(string displayName, string password);
+            
+
+        }
+
+        public User Authenticate(string displayName, string password)
+        {
+            if (string.IsNullOrEmpty(displayName) || string.IsNullOrEmpty(password))
+                return null;
+
+            var user = _context.User.SingleOrDefault(x => x.displayName == displayName);
+
+            // check if displayName exists
+            if (user == null)
+                return null;
+
+            if (password != user.password)
+                return null;
+
+            // authentication successful
+            return user;
+        }
+
+
+        public class AuthenticateModel
+        {
+            [Required]
+            public string displayName { get; set; }
+
+            [Required]
+            public string password { get; set; }
+        }
     }
+
+
 }

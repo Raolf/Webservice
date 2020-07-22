@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>c1cd1628-243e-480d-a91c-6d2db465e797</UserSecretsId>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>client-1.local.csr</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
