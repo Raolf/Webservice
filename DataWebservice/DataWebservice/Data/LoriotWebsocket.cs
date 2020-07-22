@@ -41,9 +41,10 @@ namespace DataWebservice.Data
             clientWS.ErrorReconnectTimeout = TimeSpan.FromSeconds(60);
 
             setupMessageRecieve(clientWS);
-            clientWS.Start(); 
+            Console.WriteLine("Starting Client.\n");
+            clientWS.Start();
             //Task.Run(() => Ping(clientWS));
-
+            Console.WriteLine("Loriot Running.\n");
         }
 
         public void setupMessageRecieve(WebsocketClient client)
