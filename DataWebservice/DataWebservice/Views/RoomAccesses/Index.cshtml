@@ -13,10 +13,12 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.user)
+                @*@Html.DisplayNameFor(model => model.user)*@
+                @Html.DisplayName("UserID")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.room)
+                @*@Html.DisplayNameFor(model => model.room)*@
+                @Html.DisplayName("RoomID")
             </th>
             <th></th>
         </tr>
@@ -31,9 +33,9 @@
                 @Html.DisplayFor(modelItem => item.room.roomID)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { item.userID, item.roomID})
+                @Html.ActionLink("Delete", "Delete", new { item.userID, item.roomID})*@
                 
             </td>
         </tr>

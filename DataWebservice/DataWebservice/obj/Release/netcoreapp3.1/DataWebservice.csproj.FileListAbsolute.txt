@@ -398,9 +398,6 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Rel
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.RazorCoreGenerate.cache
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\API\Index.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Data\Create.cshtml.g.cs
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Data\Delete.cshtml.g.cs
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Data\Details.cshtml.g.cs
-C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Data\Edit.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Data\Index.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
@@ -444,3 +441,6 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Rel
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.dll
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.pdb
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.genruntimeconfig.cache
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Data\Delete.cshtml.g.cs
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Data\Details.cshtml.g.cs
+C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Data\Edit.cshtml.g.cs
