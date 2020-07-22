@@ -451,3 +451,4 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\bin\Rel
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.csproj.CoreCompileInputs.cache
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\nunit.framework.dll

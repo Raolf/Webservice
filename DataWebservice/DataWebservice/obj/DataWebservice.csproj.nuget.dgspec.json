@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oscar\\Documents\\GitHub\\Webservice\\DataWebservice\\DataWebservice\\DataWebservice.csproj": {}
+    "C:\\Users\\sebas\\Projects\\GitHub\\Webservice\\DataWebservice\\DataWebservice\\DataWebservice.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oscar\\Documents\\GitHub\\Webservice\\DataWebservice\\DataWebservice\\DataWebservice.csproj": {
+    "C:\\Users\\sebas\\Projects\\GitHub\\Webservice\\DataWebservice\\DataWebservice\\DataWebservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oscar\\Documents\\GitHub\\Webservice\\DataWebservice\\DataWebservice\\DataWebservice.csproj",
+        "projectUniqueName": "C:\\Users\\sebas\\Projects\\GitHub\\Webservice\\DataWebservice\\DataWebservice\\DataWebservice.csproj",
         "projectName": "DataWebservice",
-        "projectPath": "C:\\Users\\oscar\\Documents\\GitHub\\Webservice\\DataWebservice\\DataWebservice\\DataWebservice.csproj",
-        "packagesPath": "C:\\Users\\oscar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oscar\\Documents\\GitHub\\Webservice\\DataWebservice\\DataWebservice\\obj\\",
+        "projectPath": "C:\\Users\\sebas\\Projects\\GitHub\\Webservice\\DataWebservice\\DataWebservice\\DataWebservice.csproj",
+        "packagesPath": "C:\\Users\\sebas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sebas\\Projects\\GitHub\\Webservice\\DataWebservice\\DataWebservice\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sebas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,10 +41,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.AspNet.Mvc": {
-              "target": "Package",
-              "version": "[5.2.7, )"
-            },
             "Microsoft.AspNetCore": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -92,6 +91,14 @@
               "target": "Package",
               "version": "[3.1.3, )"
             },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.12.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.17.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
@@ -131,7 +138,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

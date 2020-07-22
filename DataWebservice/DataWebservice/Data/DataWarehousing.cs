@@ -282,7 +282,7 @@ namespace DataWebservice.Data
                 {
                     servo.SecondsSinceSet = 0;
                 }
-
+                //servo.SecondsSinceSet = servo.Timestamp - _context.FactTable.Find("1");
                 //servo.HoursSinceSet = (int)Math.Round((float) (servo.SecondsSinceSet/3600));
                 //servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
                 servoTemp = servo;

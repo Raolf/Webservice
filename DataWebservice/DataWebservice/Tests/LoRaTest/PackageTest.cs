@@ -7,8 +7,15 @@ using NUnit.Framework;
 
 namespace DataWebservice.Tests.LoRaTest
 {
+    
+    [TestFixture]
     public class PackageTest
     {
+        [SetUp]
+        public void SetUp()
+        {
+
+        }
         [Test]
         public void ConverterTest()
         {
