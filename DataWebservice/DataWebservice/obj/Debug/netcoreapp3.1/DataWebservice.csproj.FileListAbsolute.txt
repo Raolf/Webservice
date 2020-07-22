@@ -288,7 +288,6 @@ C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debu
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
-C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
@@ -306,9 +305,7 @@ C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debu
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
-C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\Websocket.Client.dll
@@ -365,11 +362,8 @@ C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debu
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win-x64\nativeassets\netcoreapp2.2\aspnetcorev2_inprocess.dll
-C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win-x86\nativeassets\netcoreapp2.2\aspnetcorev2_inprocess.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
-C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
@@ -387,10 +381,7 @@ C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debu
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Reactive.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Debug\netcoreapp3.1\System.Reactive.xml
@@ -451,3 +442,5 @@ C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debu
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.csproj.CopyComplete
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.dll
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.pdb
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.csproj.CoreCompileInputs.cache
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Debug\netcoreapp3.1\DataWebservice.genruntimeconfig.cache

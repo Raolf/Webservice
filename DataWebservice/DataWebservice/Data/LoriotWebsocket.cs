@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Websocket.Client;
 using Newtonsoft.Json;
 using DataWebservice.Models;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Controller;
 
 namespace DataWebservice.Data
 {
@@ -16,6 +17,11 @@ namespace DataWebservice.Data
         CancellationTokenSource CTSource = new CancellationTokenSource();
 
         public LoriotWebsocket()
+        {
+            LoriotWebsocketStart();
+        }
+
+        public void LoriotWebsocketStart()
         {
             Func<ClientWebSocket> factory = new Func<ClientWebSocket>(() =>
             { 
@@ -30,25 +36,21 @@ namespace DataWebservice.Data
             });
 
             clientWS = new WebsocketClient(uri, factory);
-            Task.Run(() => setup());
-
-        }
-
-        async Task setup()
-        {
+        
             clientWS.ReconnectTimeout = null;
             clientWS.ErrorReconnectTimeout = TimeSpan.FromSeconds(60);
 
-            setupMessagegRecieve(clientWS);
-
-            clientWS.Start();
+            setupMessageRecieve(clientWS);
+            clientWS.Start(); 
+            //Task.Run(() => Ping(clientWS));
 
         }
 
-        public void setupMessagegRecieve(WebsocketClient client)
+        public void setupMessageRecieve(WebsocketClient client)
         {
             client.MessageReceived.Subscribe(json =>
             {
+                Console.WriteLine("Message recieved\n");
                 LoriotDTO loraData = JsonConvert.DeserializeObject<LoriotDTO>(json.ToString());
 
                 if (loraData.cmd == "rx")
@@ -118,7 +120,35 @@ namespace DataWebservice.Data
             data.CO2 = dataArray[2];
         }
 
+        public void SendMessage(Sensor sensor, string setting)
+        {
+            LoriotDTO msg = new LoriotDTO();
+            msg.cmd = "tx";
+            msg.EUI = sensor.sensorEUID;
+            //msg.confirmed = "false";
+            msg.data = setting;
+            clientWS.Send(JsonConvert.SerializeObject(msg));
 
+            var log = new SensorLog();
 
+            log.sensorID = sensor.sensorID;
+            log.sensor = sensor;
+            log.servoSetting = setting;
+            log.timestamp = DateTime.Now;
+
+            context.SensorLog.Add(log);
+        }
+
+        /*private static async Task Ping(IWebsocketClient client)
+        {
+            while (true)
+            {
+                await Task.Delay(1000 * 10);
+                if (!client.IsRunning)
+                    continue;
+
+                client.Send("ping");
+            }
+        }*/
     }
 }

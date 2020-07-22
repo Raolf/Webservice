@@ -12,7 +12,7 @@ namespace DataWebservice.Models
         public Sensor sensor { get; set; }
         //[Key, Column(Order = 1)]
         public DateTime timestamp { get; set; }
-        public bool servoSetting { get; set; }
+        public string servoSetting { get; set; }
 
     }
 }

@@ -31,10 +31,9 @@ namespace DataWebservice
                     logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
+            LoriotWebsocket lws = new LoriotWebsocket();
 
             host.Run();
-            
-            LoriotWebsocket lws = new LoriotWebsocket();
             
         }
 

@@ -104,7 +104,7 @@ namespace DataWebservice.Data
                     Monthname = date.timestamp.ToString("MMMM"),
                     Holiday = false
 
-                 };
+                };
                 dateList.Add(Date);
             }
             _context.SaveChanges();
@@ -125,7 +125,7 @@ namespace DataWebservice.Data
                     RoomID = room.roomID,
                     Name = room.roomName
 
-                 };
+                };
                 roomList.Add(Room);
             }
             _context.SaveChanges();
@@ -210,25 +210,33 @@ namespace DataWebservice.Data
         public void TransformData()
         {
             var factList = _context.FactTable.ToList();
-            foreach (FactTable data in factList) {
-                if (data.Humidity == null) {
+            foreach (FactTable data in factList)
+            {
+                if (data.Humidity == null)
+                {
                     data.Humidity = 0;
                 }
-                if (data.CO2 == null) { 
+                if (data.CO2 == null)
+                {
                     data.CO2 = 0;
                 }
-                if (data.Temperature == null) {
+                if (data.Temperature == null)
+                {
                     data.Temperature = 0;
                 }
             }
         }
-        public void TransformRoom() {
+        public void TransformRoom()
+        {
             var roomList = _context.RoomDim.ToList();
-            foreach (RoomDim room in roomList) {
-                if (room.RoomID == null) {
+            foreach (RoomDim room in roomList)
+            {
+                if (room.RoomID == null)
+                {
                     room.RoomID = 0;
                 }
-                if (room.Name == null) {
+                if (room.Name == null)
+                {
                     room.Name = "NOVALUE";
                 }
             }
@@ -238,28 +246,28 @@ namespace DataWebservice.Data
         {
             var userList = _context.UserDim.ToList();
             foreach (UserDim user in userList)
+            {
+                if (user.UserID == null)
                 {
-                    if (user.UserID == null)
-                    {
-                        user.UserID = 0;
-                    }
-                    if (user.DisplayName == null)
-                    {
-                        user.DisplayName = "NOVALUE";
-                    }
-                    if (user.Admin == null)
-                    {
-                        user.Admin = false;
-                    }
+                    user.UserID = 0;
+                }
+                if (user.DisplayName == null)
+                {
+                    user.DisplayName = "NOVALUE";
+                }
+                if (user.Admin == null)
+                {
+                    user.Admin = false;
                 }
             }
+        }
         public void transformServo()
         {
             var servoList = _context.ServoDim.ToList();
             ServoDim servoTemp = null;
             foreach (ServoDim servo in servoList)
             {
-                
+
                 if (servo.SensorID == null)
                 {
                     servo.SensorID = 0;
@@ -267,17 +275,18 @@ namespace DataWebservice.Data
                 if (servoTemp != null)
                 {
                     //servo.SecondsSinceSet = servo. - _context.DB.GetSensor(Stage_Servo.S_ID).GetSensorLog().GetLastItem();
-                } else
+                }
+                else
                 {
                     servo.SecondsSinceSet = 0;
                 }
-                
+
                 //servo.HoursSinceSet = (int)Math.Round((float) (servo.SecondsSinceSet/3600));
                 //servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
                 servoTemp = servo;
             }
         }
-    }
+
 
         public void ProcessDateDim()
         {
@@ -315,7 +324,7 @@ namespace DataWebservice.Data
         {
             var users = _context.DWUserDim.ToList();
             var userList = new List<DWUserDim>();
-            
+
             foreach (var user in users)
             {
 
@@ -350,7 +359,7 @@ namespace DataWebservice.Data
             }
             _context.SaveChanges();
         }
-        
+
         public void ProcessRoomDim()
         {
             var list = _context.Room.ToList();
@@ -369,7 +378,8 @@ namespace DataWebservice.Data
             _context.SaveChanges();
         }
 
-    //SecondSsinceSet = data.Timestamp.seconds-sensorLog.Timestamp.seconds;
-    //HoursSinceSet = data.Timestamp.hours-sensorLog.Timestamp.hours;
-    //DaysSince = data.Timestamp.hours-sensorLog.Timestamp.hours
+        //SecondSsinceSet = data.Timestamp.seconds-sensorLog.Timestamp.seconds;
+        //HoursSinceSet = data.Timestamp.hours-sensorLog.Timestamp.hours;
+        //DaysSince = data.Timestamp.hours-sensorLog.Timestamp.hours
+    }
 }
