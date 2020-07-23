@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DataWebservice.Data;
 using DataWebservice.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DataWebservice.Controllers
 {
+    [Authorize(Policy = "Administrator")]
     public class Users2Controller : Controller
     {
         private readonly DataWebserviceContext _context;

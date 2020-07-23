@@ -48,8 +48,14 @@ namespace DataWebservice
 
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DataWebserviceContext>();
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Administrator", policy => policy.RequireRole("Admin"));
+
+            });
 
             /*
             services.Configure<IdentityOptions>(options =>
@@ -73,11 +79,7 @@ namespace DataWebservice
                 .AddDefaultTokenProviders();
 
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("Administrator", policy => policy.RequireRole("Admin"));
 
-            });
             services.Configure<IISServerOptions>(options =>
             {
                 options.AutomaticAuthentication = false;
