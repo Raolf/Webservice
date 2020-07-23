@@ -38,8 +38,6 @@ namespace DataWebservice
             services.AddDbContext<DataWebserviceContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataWebserviceContext")));
       
-
-
             services.AddMvc();
             services.AddRazorPages();
 
@@ -49,6 +47,8 @@ namespace DataWebservice
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<DataWebserviceContext>();
+
+            services.AddTransient<LoriotWebsocket>();
 
 
             /*

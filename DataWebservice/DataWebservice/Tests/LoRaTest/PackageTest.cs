@@ -20,7 +20,7 @@ namespace DataWebservice.Tests.LoRaTest
         public void ConverterTest()
         {
             string hex = "0029001502e5";
-            LoriotWebsocket lws = new LoriotWebsocket();
+            LoriotWebsocket lws = new LoriotWebsocket(new DataWebserviceContext());
             Models.Data data = lws.HexIntoData(hex);
 
             Assert.IsTrue(data.humidity == 41);
