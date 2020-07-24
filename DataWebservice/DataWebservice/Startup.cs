@@ -53,7 +53,7 @@ namespace DataWebservice
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("Administrator", policy => policy.RequireRole("Admin"));
+                options.AddPolicy("Super Admin", policy => policy.RequireRole("Super Admin"));
 
             });
 

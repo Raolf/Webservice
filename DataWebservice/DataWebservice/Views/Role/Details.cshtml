@@ -1,4 +1,6 @@
-﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+﻿@using Microsoft.AspNetCore.Identity
+@model Microsoft.AspNetCore.Identity.IdentityRole
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Details";
@@ -11,10 +13,10 @@
     <hr />
     Users in role
     <ul class="list-group">
-        @foreach (User user in ViewBag.Users)
+        @foreach (IdentityUser user in ViewBag.Users)
         {
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a asp-action="Details" asp-controller="User" asp-route-id="@user.userID">@user.displayName</a>
+                <a>@user.UserName</a>
             </li>
         }
     </ul>

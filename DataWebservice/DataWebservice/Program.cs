@@ -8,6 +8,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using DataWebservice.Data;
+using DatawebService.Data;
+using System.Configuration;
 
 namespace DataWebservice
 {
@@ -17,13 +19,21 @@ namespace DataWebservice
         {
             var host = CreateHostBuilder(args).Build();
 
+            
+            
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
                 {
+                    var serviceProvider = services.GetRequiredService<IServiceProvider>();
+                    var configuration = services.GetRequiredService<IConfiguration>();
+
+                    Seed.InitialSetup(serviceProvider, configuration).Wait();
+
                     var context = services.GetRequiredService<DataWebserviceContext>();
-                    DbInitializer.Initialize(context);
+                    DbInitializer.Initialize(context);    
+                    
                 }
                 catch (Exception ex)
                 {
@@ -42,7 +52,7 @@ namespace DataWebservice
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>();                  
                 });
     }
 }
