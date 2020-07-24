@@ -38,8 +38,6 @@ namespace DataWebservice
             services.AddDbContext<DataWebserviceContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataWebserviceContext")));
       
-
-
             services.AddMvc();
             services.AddRazorPages();
 
@@ -51,11 +49,15 @@ namespace DataWebservice
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DataWebserviceContext>();
 
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Super Admin", policy => policy.RequireRole("Super Admin"));
-
             });
+
+            services.AddTransient<LoriotWebsocket>();
+
+
 
             /*
             services.Configure<IdentityOptions>(options =>
@@ -79,7 +81,11 @@ namespace DataWebservice
                 .AddDefaultTokenProviders();
 
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Administrator", policy => policy.RequireRole("Admin"));
 
+            });
             services.Configure<IISServerOptions>(options =>
             {
                 options.AutomaticAuthentication = false;
