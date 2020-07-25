@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DataWebservice.Controllers
 {
-    [Authorize(Policy = "Administrator")]
+    [Authorize(Policy = "Super Admin")]
     public class Users2Controller : Controller
     {
         private readonly DataWebserviceContext _context;

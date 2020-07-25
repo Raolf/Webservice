@@ -49,7 +49,14 @@ namespace DataWebservice
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DataWebserviceContext>();
 
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Super Admin", policy => policy.RequireRole("Super Admin"));
+            });
+
             services.AddTransient<LoriotWebsocket>();
+
 
 
             /*
