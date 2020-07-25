@@ -452,3 +452,16 @@ C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Rel
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\oscar\Documents\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\DataWebservice.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\nunit.framework.dll
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\NUnit3.TestAdapter.dll
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\NUnit3.TestAdapter.pdb
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\nunit.engine.dll
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\nunit.engine.api.dll
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\nunit.engine.core.dll
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\Microsoft.DotNet.InternalAbstractions.dll
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\bin\Release\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Role\Create.cshtml.g.cs
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Role\Delete.cshtml.g.cs
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Role\Details.cshtml.g.cs
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Role\Edit.cshtml.g.cs
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\Role\Index.cshtml.g.cs
+C:\Users\sebas\Projects\GitHub\Webservice\DataWebservice\DataWebservice\obj\Release\netcoreapp3.1\Razor\Views\UserRole\RoleManagement.cshtml.g.cs

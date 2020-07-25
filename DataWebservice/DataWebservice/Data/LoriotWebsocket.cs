@@ -109,16 +109,22 @@ namespace DataWebservice.Data
             Sensor sense = context.Sensor.AsQueryable().FirstOrDefault(s => s.sensorEUID == data.sensorEUID);
             if (sense == null)
             {
-                Sensor sensor = new Sensor();
-                sensor.sensorEUID = data.sensorEUID;
+                sense = new Sensor();
+                sense.sensorEUID = data.sensorEUID;
                 int count = context.Sensor.AsQueryable().Count();
                 if (context.Sensor.AsQueryable().Where(s => s.sensorID == count) == null)
                 {
-                    sensor.sensorID = count;
-                    sensor.sensorEUID = data.sensorEUID;
-                    sensor.sensorLog = new List<SensorLog>();
+                    sense.sensorID = count;
                 }
-                sensor.sensorID = context.Sensor.AsQueryable().Count();
+                else
+                {
+                    //sense.sensorID = context.Sensor.AsQueryable().Count() + 1;
+                }
+                sense.sensorEUID = data.sensorEUID;
+                sense.sensorLog = new List<SensorLog>();
+
+                context.Add(sense);
+                context.SaveChanges();
             }
             data.sensor = sense;
             data.sensorID = sense.sensorID;
@@ -128,7 +134,7 @@ namespace DataWebservice.Data
         {
             
             GetMatchingSensor(data, _context);
-            _context.Data.Add(data);
+            _context.Add(data);
             _context.SaveChanges();
             Console.WriteLine("Added data to DB.\n");
         }

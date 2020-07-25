@@ -46,6 +46,7 @@ namespace DataWebservice
 
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DataWebserviceContext>();
 
             services.AddTransient<LoriotWebsocket>();
