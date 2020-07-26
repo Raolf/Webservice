@@ -118,7 +118,7 @@ namespace DataWebservice.Data
                 }
                 else
                 {
-                    //sense.sensorID = context.Sensor.AsQueryable().Count() + 1;
+                    sense.sensorID = context.Sensor.AsQueryable().Count() + 1;
                 }
                 sense.sensorEUID = data.sensorEUID;
                 sense.sensorLog = new List<SensorLog>();

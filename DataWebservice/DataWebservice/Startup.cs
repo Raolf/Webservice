@@ -55,7 +55,7 @@ namespace DataWebservice
                 options.AddPolicy("Super Admin", policy => policy.RequireRole("Super Admin"));
             });
 
-            services.AddTransient<LoriotWebsocket>();
+            services.AddScoped<LoriotWebsocket>();
 
 
 

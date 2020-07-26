@@ -11,9 +11,9 @@ namespace DataWebservice.Models
         public string sensorEUID { get; set; }
         public int servoSetting { get; set; }
 
-        public int roomID { get; set; }
+        public int? roomID { get; set; }
 
-        public Room room { get; set; }
+        public Room? room { get; set; }
 
         public ICollection<Data> data { get; set; }
 

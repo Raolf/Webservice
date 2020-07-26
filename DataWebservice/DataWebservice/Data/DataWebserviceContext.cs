@@ -28,8 +28,6 @@ namespace DataWebservice.Data
         {
             base.OnModelCreating(modelBuilder);
 
-
-
             modelBuilder.Entity<RoomAccess>().HasKey(ra => new { ra.roomID, ra.userID });
 
             modelBuilder.Entity<RoomAccess>()
