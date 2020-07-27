@@ -9,7 +9,7 @@ namespace DataWebservice.Models
     {
         public int sensorID { get; set; }
         public List<DataDTO> data { get; set; }
-        public int servosetting { get; set; }
+        public string servosetting { get; set; }
 
     }
 }

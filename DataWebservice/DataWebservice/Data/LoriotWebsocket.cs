@@ -45,7 +45,6 @@ namespace DataWebservice.Data
 
             setupMessageRecieve(clientWS);
             clientWS.Start();
-            //Task.Run(() => Ping(clientWS));
             Console.WriteLine("Loriot Running.\n");
         }
 
@@ -91,8 +90,7 @@ namespace DataWebservice.Data
             LoriotDTO msg = new LoriotDTO();
             msg.cmd = "tx";
             msg.EUI = sensor.sensorEUID;
-            //msg.confirmed = "false";
-            msg.data = setting;
+            msg.data = sensor.servoSetting;
             clientWS.Send(JsonConvert.SerializeObject(msg));
 
             var log = new SensorLog();
@@ -133,7 +131,7 @@ namespace DataWebservice.Data
         public async void Save(Models.Data data)
         {
             
-            GetMatchingSensor(data, _context);
+            Sensor sensor = GetMatchingSensor(data, _context);
             _context.Add(data);
             _context.SaveChanges();
             Console.WriteLine("Added data to DB.\n");
