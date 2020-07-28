@@ -22,5 +22,6 @@ namespace DataWebservice.Data
         public int bat { get; set; }
         public bool offline { get; set; }
         public string data { get; set; }
+        public bool confirmed { get; set; }
     }
 }

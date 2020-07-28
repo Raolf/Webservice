@@ -84,14 +84,14 @@ namespace DataWebservice.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("roomID")
+                    b.Property<int?>("roomID")
                         .HasColumnType("int");
 
                     b.Property<string>("sensorEUID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("servoSetting")
-                        .HasColumnType("int");
+                    b.Property<string>("servoSetting")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("sensorID");
 
@@ -105,8 +105,8 @@ namespace DataWebservice.Migrations
                     b.Property<int>("sensorID")
                         .HasColumnType("int");
 
-                    b.Property<bool>("servoSetting")
-                        .HasColumnType("bit");
+                    b.Property<string>("servoSetting")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("timestamp")
                         .HasColumnType("datetime2");
@@ -135,6 +135,150 @@ namespace DataWebservice.Migrations
                     b.HasKey("userID");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("DataWebservice.Models.Warehousing.DW.DWDateDim", b =>
+                {
+                    b.Property<int>("D_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Holiday")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Hour")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Minute")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Monthname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Second")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Weekday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("D_ID");
+
+                    b.ToTable("DWDateDim");
+                });
+
+            modelBuilder.Entity("DataWebservice.Models.Warehousing.DW.DWFactTable", b =>
+                {
+                    b.Property<int>("DataKey")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CO2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("D_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Humidity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("R_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("S_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Servosetting")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Temperature")
+                        .HasColumnType("int");
+
+                    b.Property<int>("U_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UniqueID")
+                        .HasColumnType("int");
+
+                    b.HasKey("DataKey");
+
+                    b.ToTable("DWFactTable");
+                });
+
+            modelBuilder.Entity("DataWebservice.Models.Warehousing.DW.DWRoomDim", b =>
+                {
+                    b.Property<int>("R_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoomID")
+                        .HasColumnType("int");
+
+                    b.HasKey("R_ID");
+
+                    b.ToTable("DWRoomDim");
+                });
+
+            modelBuilder.Entity("DataWebservice.Models.Warehousing.DW.DWServoDim", b =>
+                {
+                    b.Property<int>("S_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DaysSinceSet")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HoursSinceSet")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PD_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SecondsSinceSet")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SensorID")
+                        .HasColumnType("int");
+
+                    b.HasKey("S_ID");
+
+                    b.ToTable("DWServoDim");
+                });
+
+            modelBuilder.Entity("DataWebservice.Models.Warehousing.DW.DWUserDim", b =>
+                {
+                    b.Property<int>("U_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Admin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("DisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("U_ID");
+
+                    b.ToTable("DWUserDim");
                 });
 
             modelBuilder.Entity("DataWebservice.Models.Warehousing.Stage.DateDim", b =>
@@ -198,8 +342,8 @@ namespace DataWebservice.Migrations
                     b.Property<int>("S_ID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Servosetting")
-                        .HasColumnType("int");
+                    b.Property<string>("Servosetting")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Temperature")
                         .HasColumnType("int");
@@ -251,6 +395,9 @@ namespace DataWebservice.Migrations
 
                     b.Property<int>("SensorID")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("S_ID");
 
@@ -506,9 +653,7 @@ namespace DataWebservice.Migrations
                 {
                     b.HasOne("DataWebservice.Models.Room", "room")
                         .WithMany("sensors")
-                        .HasForeignKey("roomID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("roomID");
                 });
 
             modelBuilder.Entity("DataWebservice.Models.SensorLog", b =>

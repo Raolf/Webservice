@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using DataWebservice.Data;
 using DatawebService.Data;
 using System.Configuration;
+using DataWebservice.Models;
+using NUnit.Framework.Constraints;
 
 namespace DataWebservice
 {
@@ -45,6 +47,13 @@ namespace DataWebservice
             }
             var lws = new LoriotWebsocket(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());//host.Services.GetRequiredService<LoriotWebsocket>();
             lws.LoriotWebsocketStart();
+            Sensor sensor = new Sensor();
+            sensor.sensorEUID = "0004A30B00259F36";
+            sensor.servoSetting = "00000000";
+            sensor.sensorLog = new List<SensorLog>();
+            sensor.sensorID = 2;
+            
+            lws.SendMessage(sensor);
 
             host.Run();
             

@@ -58,7 +58,8 @@ namespace DataWebservice.Data
                 if (loraData.cmd == "rx")
                 {
                     Models.Data data = HexIntoData(loraData.data); //LoraData.data is a hex string, data is the webservices data class.
-                    data.timestamp = new DateTime(1970, 1, 1, 2, 0, 0, DateTimeKind.Local).AddSeconds((double)loraData.ts / 1000);//Could be improved.
+                    data.timestamp = new DateTime(1970, 1, 1, 2, 0, 0, DateTimeKind.Local).AddSeconds((double) loraData.ts / 1000);//Could be improved.
+                    Console.WriteLine("Date is: "+data.timestamp+"\n");
                     data.sensorEUID = loraData.EUI;
                     Task.Run(()=> Save(data));
                 }
@@ -85,22 +86,28 @@ namespace DataWebservice.Data
             return data;
         }
 
-        public void SendMessage(Sensor sensor, string setting)
+        public void SendMessage(Sensor sensor)
         {
             LoriotDTO msg = new LoriotDTO();
             msg.cmd = "tx";
             msg.EUI = sensor.sensorEUID;
             msg.data = sensor.servoSetting;
+            msg.port = 3;
+            msg.confirmed = false;
             clientWS.Send(JsonConvert.SerializeObject(msg));
+            Console.WriteLine("Message sent");
 
             var log = new SensorLog();
 
-            log.sensorID = sensor.sensorID;
-            log.sensor = sensor;
-            log.servoSetting = setting;
+            log.servoSetting = sensor.servoSetting;
             log.timestamp = DateTime.Now;
 
-            _context.SensorLog.Add(log);
+            //_context.Sensor.Find(sensor);
+            //sensor.sensorLog.Add(log);
+            //_context.SensorLog.Add(log);
+            log.sensorID = sensor.sensorID;
+            //log.sensor = sensor;
+             _context.SaveChanges();
         }
         public Sensor GetMatchingSensor(Models.Data data, DataWebserviceContext context)
         {
@@ -130,11 +137,12 @@ namespace DataWebservice.Data
         }
         public async void Save(Models.Data data)
         {
-            
             Sensor sensor = GetMatchingSensor(data, _context);
             _context.Add(data);
             _context.SaveChanges();
             Console.WriteLine("Added data to DB.\n");
+            SendMessage(sensor);
+            Console.WriteLine("Message Sent\n");
         }
     }
 }

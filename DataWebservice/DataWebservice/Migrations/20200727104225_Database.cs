@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataWebservice.Migrations
 {
-    public partial class NewDatabase2 : Migration
+    public partial class Database : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,6 +68,94 @@ namespace DataWebservice.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DWDateDim",
+                columns: table => new
+                {
+                    D_ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Year = table.Column<int>(nullable: false),
+                    Month = table.Column<int>(nullable: false),
+                    Day = table.Column<int>(nullable: false),
+                    Hour = table.Column<int>(nullable: false),
+                    Minute = table.Column<int>(nullable: false),
+                    Second = table.Column<int>(nullable: false),
+                    Weekday = table.Column<string>(nullable: true),
+                    Monthname = table.Column<string>(nullable: true),
+                    Holiday = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DWDateDim", x => x.D_ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DWFactTable",
+                columns: table => new
+                {
+                    DataKey = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UniqueID = table.Column<int>(nullable: false),
+                    D_ID = table.Column<int>(nullable: false),
+                    R_ID = table.Column<int>(nullable: false),
+                    S_ID = table.Column<int>(nullable: false),
+                    U_ID = table.Column<int>(nullable: false),
+                    Servosetting = table.Column<string>(nullable: true),
+                    Humidity = table.Column<int>(nullable: false),
+                    CO2 = table.Column<int>(nullable: false),
+                    Temperature = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DWFactTable", x => x.DataKey);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DWRoomDim",
+                columns: table => new
+                {
+                    R_ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoomID = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DWRoomDim", x => x.R_ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DWServoDim",
+                columns: table => new
+                {
+                    S_ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SensorID = table.Column<int>(nullable: false),
+                    PD_ID = table.Column<int>(nullable: false),
+                    DaysSinceSet = table.Column<int>(nullable: false),
+                    HoursSinceSet = table.Column<int>(nullable: false),
+                    SecondsSinceSet = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DWServoDim", x => x.S_ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DWUserDim",
+                columns: table => new
+                {
+                    U_ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<int>(nullable: false),
+                    DisplayName = table.Column<string>(nullable: true),
+                    Admin = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DWUserDim", x => x.U_ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FactTable",
                 columns: table => new
                 {
@@ -77,7 +165,7 @@ namespace DataWebservice.Migrations
                     R_ID = table.Column<int>(nullable: false),
                     S_ID = table.Column<int>(nullable: false),
                     U_ID = table.Column<int>(nullable: false),
-                    Servosetting = table.Column<int>(nullable: false),
+                    Servosetting = table.Column<string>(nullable: true),
                     Humidity = table.Column<int>(nullable: false),
                     CO2 = table.Column<int>(nullable: false),
                     Temperature = table.Column<int>(nullable: false)
@@ -124,7 +212,8 @@ namespace DataWebservice.Migrations
                     PD_ID = table.Column<int>(nullable: false),
                     DaysSinceSet = table.Column<int>(nullable: false),
                     HoursSinceSet = table.Column<int>(nullable: false),
-                    SecondsSinceSet = table.Column<int>(nullable: false)
+                    SecondsSinceSet = table.Column<int>(nullable: false),
+                    Timestamp = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -274,8 +363,8 @@ namespace DataWebservice.Migrations
                     sensorID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     sensorEUID = table.Column<string>(nullable: true),
-                    servoSetting = table.Column<int>(nullable: false),
-                    roomID = table.Column<int>(nullable: false)
+                    servoSetting = table.Column<string>(nullable: true),
+                    roomID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -285,7 +374,7 @@ namespace DataWebservice.Migrations
                         column: x => x.roomID,
                         principalTable: "Room",
                         principalColumn: "roomID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -341,7 +430,7 @@ namespace DataWebservice.Migrations
                 {
                     sensorID = table.Column<int>(nullable: false),
                     timestamp = table.Column<DateTime>(nullable: false),
-                    servoSetting = table.Column<bool>(nullable: false)
+                    servoSetting = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -426,6 +515,21 @@ namespace DataWebservice.Migrations
 
             migrationBuilder.DropTable(
                 name: "DateDim");
+
+            migrationBuilder.DropTable(
+                name: "DWDateDim");
+
+            migrationBuilder.DropTable(
+                name: "DWFactTable");
+
+            migrationBuilder.DropTable(
+                name: "DWRoomDim");
+
+            migrationBuilder.DropTable(
+                name: "DWServoDim");
+
+            migrationBuilder.DropTable(
+                name: "DWUserDim");
 
             migrationBuilder.DropTable(
                 name: "FactTable");
