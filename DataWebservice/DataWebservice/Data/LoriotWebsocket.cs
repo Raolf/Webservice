@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Controller;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using DataWebservice.Controllers.API;
 
 namespace DataWebservice.Data
 {
@@ -18,10 +19,14 @@ namespace DataWebservice.Data
         Uri uri = new Uri("wss://iotnet.teracom.dk/app?token=vnoS7QAAABFpb3RuZXQudGVyYWNvbS5ka7A2D2ki2C8DUDFO6UOff4g=");
         WebsocketClient clientWS;
         CancellationTokenSource CTSource = new CancellationTokenSource();
+        SensorsController sc;
+        DataController dc;
 
         public LoriotWebsocket(DataWebserviceContext _context)
         {
             this._context = _context;
+            sc = new SensorsController(_context);
+            dc = new DataController(_context);
         }
 
         public void LoriotWebsocketStart()
@@ -117,19 +122,10 @@ namespace DataWebservice.Data
                 sense = new Sensor();
                 sense.sensorEUID = data.sensorEUID;
                 int count = context.Sensor.AsQueryable().Count();
-                if (context.Sensor.AsQueryable().Where(s => s.sensorID == count) == null)
-                {
-                    sense.sensorID = count;
-                }
-                else
-                {
-                    sense.sensorID = context.Sensor.AsQueryable().Count() + 1;
-                }
-                sense.sensorEUID = data.sensorEUID;
                 sense.sensorLog = new List<SensorLog>();
+                sense.servoSetting = "00000000";
 
-                context.Add(sense);
-                context.SaveChanges();
+                sc.PostSensor(sense).Wait();
             }
             data.sensor = sense;
             data.sensorID = sense.sensorID;

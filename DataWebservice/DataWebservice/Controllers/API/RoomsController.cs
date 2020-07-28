@@ -39,7 +39,7 @@ namespace DataWebservice.Controllers.API
 
         // GET: api/Rooms/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Room>> GetRoom(int id)
+        public async Task<ActionResult<RoomDTO>> GetRoom(int id)
         {
             var room = await _context.Room.Where(r => r.roomID == id)
                 .Include(r => r.sensors)
@@ -55,7 +55,7 @@ namespace DataWebservice.Controllers.API
                 return NotFound();
             }
 
-            return room;
+            return room.ToDTO();
         }
 
         // GET: api/Room/5

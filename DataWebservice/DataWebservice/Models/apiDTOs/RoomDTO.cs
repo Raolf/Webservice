@@ -7,6 +7,10 @@ namespace DataWebservice.Models.apiDTOs
 {
     public class RoomDTO
     {
+        public RoomDTO()
+        {
+            sensors = new List<SensorDTO>();
+        }
         public int roomID { get; set; }
         public string name { get; set; }
         public List<SensorDTO> sensors { get; set; }
