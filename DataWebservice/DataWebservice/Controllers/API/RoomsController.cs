@@ -39,7 +39,7 @@ namespace DataWebservice.Controllers.API
 
         // GET: api/Rooms/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Room>> GetRoom(int id)
+        public async Task<ActionResult<RoomDTO>> GetRoom(int id)
         {
             var room = await _context.Room.Where(r => r.roomID == id)
                 .Include(r => r.sensors)
@@ -55,21 +55,21 @@ namespace DataWebservice.Controllers.API
                 return NotFound();
             }
 
-            return room;
+            return room.ToDTO();
         }
 
         // GET: api/Room/5
         [HttpGet("roomsforuser/{id}")]
-        public async Task<ActionResult<IEnumerable<Room>>> GetRoomsForUser(int id)
+        public async Task<ActionResult<IEnumerable<RoomDTO>>> GetRoomsForUser(int id)
         {
 
             var roomAccess = await _context.RoomAccess.Where(ra => ra.userID == id).ToListAsync();
-            List<Room> rooms = new List<Room>();
+            List<RoomDTO> rooms = new List<RoomDTO>();
 
             foreach (var item in roomAccess)
             {
                 var room = await _context.Room.FindAsync(item.roomID);
-                rooms.Add(room);
+                rooms.Add(room.ToDTO());
             }
             return rooms;
         }

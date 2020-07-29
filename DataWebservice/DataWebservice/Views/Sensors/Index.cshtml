@@ -34,7 +34,10 @@
                 @Html.DisplayFor(modelItem => item.sensorID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.room.roomID)
+                @if (item.room != null)
+                {
+                    Html.DisplayFor(modelItem => item.room.roomID);
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.servoSetting)

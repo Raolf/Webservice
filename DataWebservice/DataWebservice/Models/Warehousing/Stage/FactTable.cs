@@ -12,7 +12,7 @@ namespace DataWebservice.Models.Warehousing.Stage
         public int R_ID { get; set; }
         public int S_ID { get; set; }
         public int U_ID { get; set; }
-        public int Servosetting { get; set; }
+        public string Servosetting { get; set; }
         public int Humidity { get; set; }
         public int CO2 { get; set; }
         public int Temperature { get; set; }

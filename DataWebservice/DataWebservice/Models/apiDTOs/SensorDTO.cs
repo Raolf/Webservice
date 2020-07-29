@@ -7,9 +7,14 @@ namespace DataWebservice.Models.apiDTOs
 {
     public class SensorDTO
     {
+        public SensorDTO()
+        {
+            data = new List<DataDTO>();
+        }
+
         public int sensorID { get; set; }
         public List<DataDTO> data { get; set; }
-        public int servosetting { get; set; }
+        public string servosetting { get; set; }
 
     }
 }
