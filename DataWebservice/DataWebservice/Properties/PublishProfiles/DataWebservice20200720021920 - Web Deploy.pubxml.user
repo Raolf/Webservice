@@ -8,4 +8,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFVGgXPbGhUGmsCHMqx7iHAAAAAACAAAAAAAQZgAAAAEAACAAAACCy42hubZVpvt+rF8dygJVf/v7FLWNQ3ziL/W00oZR3gAAAAAOgAAAAAIAACAAAAAv4hkl+2VWI9NTxzkxOS+TApbgk6yDp0sC2KV5VJG+zoAAAABNyzFjPTfmlVJew+LlUVazRM7Op4/4H1wNrQzvxvDWkGD+sb3jPmS3U5ObW5kfuvEC5pxyx8Uq/0rJOv7E9T98YUDBkL20Wp/4HZEtqqKeLZYrXGlKyfkZZ87ppyO4c9xsnJANgbSq1qH3ISH2/7uBDSfcLCHVWe3Plb44nyru/UAAAACXDp4e7c/aMFxT+NnbHeZI9cWTuOG/DVLAj9XMc6Khpa5Q+OfNh64TQYcZuaXU7Lw0HhCjYSiW3SP77BBo1K0h</EncryptedPassword>
   </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="DataWebservice.Data.DataWebserviceContext">
+      <Value>Server=tcp:datawebservice20200720021920dbserver.database.windows.net,1433%3bInitial Catalog=DWDataBase%3bPersist Security Info=False%3bUser ID=seba7666%3bPassword=Juh88bxr%3bMultipleActiveResultSets=True%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
 </Project>
