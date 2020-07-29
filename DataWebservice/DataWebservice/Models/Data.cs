@@ -4,11 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using DataWebservice.Models.apiDTOs;
 
 namespace DataWebservice.Models
 {
     public class Data
     {
+        public Data(int dataID, DateTime timestamp, int humidity, int CO2, int temperature, int sensorID, string sensorEUID)
+        {
+        }
+
+        public Data()
+        { }
+
         public int dataID { get; set; }
         public DateTime timestamp { get; set; }
         public int humidity { get; set; }

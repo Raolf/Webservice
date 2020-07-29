@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DataWebservice.Data;
 using DataWebservice.Models;
+using DataWebservice.Models.apiDTOs;
 
 namespace DataWebservice.Controllers.API
 {
@@ -37,7 +38,7 @@ namespace DataWebservice.Controllers.API
 
         // GET: api/Data/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Models.DataDTO>> GetData(int id)
+        public async Task<ActionResult<DataDTO>> GetData(int id)
         {
             var data = await _context.Data.FindAsync(id);
 
@@ -109,9 +110,9 @@ namespace DataWebservice.Controllers.API
 
         // DELETE: api/Data/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Models.Data>> DeleteData(int id)
+        public async Task<ActionResult<Models.Data>> DeleteData(int id, DateTime dateTime)
         {
-            var data = await _context.Data.FindAsync(id);
+            var data = await _context.Data.FindAsync(id, dateTime);
             if (data == null)
             {
                 return NotFound();
