@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataWebservice.Migrations
 {
     [DbContext(typeof(DataWebserviceContext))]
-    [Migration("20200727104225_Database")]
+    [Migration("20200729115048_Database")]
     partial class Database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

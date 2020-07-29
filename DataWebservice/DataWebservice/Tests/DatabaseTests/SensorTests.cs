@@ -57,7 +57,7 @@ namespace DataWebservice.Tests.DatabaseTests
                 }
 
                 Models.Sensor testdata = new Models.Sensor();
-                testdata.servoSetting = 5;
+                testdata.servoSetting = "5";
                 testdata.roomID = RoomList[0].roomID;
                 await controller.PostSensor(testdata);
 
@@ -71,7 +71,7 @@ namespace DataWebservice.Tests.DatabaseTests
                 }
 
                 Assert.AreEqual(Listcount, List.Count);
-                Assert.AreEqual(5, List[Listcount-1].servoSetting);
+                Assert.AreEqual("5", List[Listcount-1].servoSetting);
 
                 //Delete
 
