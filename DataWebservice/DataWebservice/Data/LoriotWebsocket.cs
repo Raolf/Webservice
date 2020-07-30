@@ -21,12 +21,14 @@ namespace DataWebservice.Data
         CancellationTokenSource CTSource = new CancellationTokenSource();
         SensorsController sc;
         DataController dc;
+        SensorLogsController slc;
 
         public LoriotWebsocket(DataWebserviceContext _context)
         {
             this._context = _context;
             sc = new SensorsController(_context);
             dc = new DataController(_context);
+            slc = new SensorLogsController(_context);
         }
 
         public void LoriotWebsocketStart()
@@ -91,7 +93,7 @@ namespace DataWebservice.Data
             return data;
         }
 
-        public void SendMessage(Sensor sensor)
+        public async void SendMessage(Sensor sensor)
         {
             LoriotDTO msg = new LoriotDTO();
             msg.cmd = "tx";
@@ -102,7 +104,10 @@ namespace DataWebservice.Data
             clientWS.Send(JsonConvert.SerializeObject(msg));
             Console.WriteLine("Message sent");
 
+            
             var log = new SensorLog();
+
+            sensor = _context.Sensor.AsQueryable().First(s => s.sensorEUID == sensor.sensorEUID);
 
             log.servoSetting = sensor.servoSetting;
             log.timestamp = DateTime.Now;
@@ -112,11 +117,12 @@ namespace DataWebservice.Data
             //_context.SensorLog.Add(log);
             log.sensorID = sensor.sensorID;
             //log.sensor = sensor;
+            await slc.PostSensorLog(log);
              _context.SaveChanges();
         }
         public Sensor GetMatchingSensor(Models.Data data, DataWebserviceContext context)
         {
-            Sensor sense = context.Sensor.AsQueryable().FirstOrDefault(s => s.sensorEUID == data.sensorEUID);
+            Sensor sense = context.Sensor.AsQueryable().First(s => s.sensorEUID == data.sensorEUID);
             if (sense == null)
             {
                 sense = new Sensor();
@@ -126,7 +132,10 @@ namespace DataWebservice.Data
                 sense.servoSetting = "00000000";
 
                 sc.PostSensor(sense).Wait();
-            }
+                sense = context.Sensor.AsQueryable().First(s => s.sensorEUID == data.sensorEUID);
+                
+            }          
+
             data.sensor = sense;
             data.sensorID = sense.sensorID;
             return sense;

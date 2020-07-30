@@ -15,6 +15,7 @@ using DataWebservice.Tests.DatabaseTests;
 
 using DataWebservice.Models;
 using NUnit.Framework.Constraints;
+using DataWebservice.Controllers;
 
 namespace DataWebservice
 {
@@ -38,26 +39,26 @@ namespace DataWebservice
 
                     Seed.InitialSetup(serviceProvider, configuration).Wait();
 
-                    var context = services.GetRequiredService<DataWebserviceContext>();
-                    DataTests dataTests = new DataTests(context);
-                    dataTests.Can_get_items();
-                    DataTests dataTests2 = new DataTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
-                    dataTests2.Can_post_items();
+                    //var context = services.GetRequiredService<DataWebserviceContext>();
+                    //DataTests dataTests = new DataTests(context);
+                    //dataTests.Can_get_items();
+                    //DataTests dataTests2 = new DataTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
+                    //dataTests2.Can_post_items();
 
-                    RoomTests roomTests = new RoomTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
-                    roomTests.Can_get_items();
-                    RoomTests roomTests2 = new RoomTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
-                    roomTests2.Can_post_items();
+                    //RoomTests roomTests = new RoomTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
+                    //roomTests.Can_get_items();
+                    //RoomTests roomTests2 = new RoomTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
+                    //roomTests2.Can_post_items();
 
-                    SensorTests sensorTests = new SensorTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
-                    sensorTests.Can_get_items();
-                    SensorTests sensorTests2 = new SensorTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
-                    sensorTests2.Can_post_items();
+                    //SensorTests sensorTests = new SensorTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
+                    //sensorTests.Can_get_items();
+                    //SensorTests sensorTests2 = new SensorTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
+                    //sensorTests2.Can_post_items();
 
-                    UserTests userTests = new UserTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
-                    userTests.Can_get_items();
-                    UserTests userTests2 = new UserTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
-                    userTests2.Can_post_delete_items();
+                    //UserTests userTests = new UserTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
+                    //userTests.Can_get_items();
+                    //UserTests userTests2 = new UserTests(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
+                    //userTests2.Can_post_delete_items();
 
 
                     Console.WriteLine("Tests complete");                   
@@ -76,8 +77,9 @@ namespace DataWebservice
             sensor.sensorEUID = "0004A30B00259F36";
             sensor.servoSetting = "00000000";
             sensor.sensorLog = new List<SensorLog>();
-            sensor.sensorID = 2;
-            
+            //sensor.sensorID = 2;
+            Controllers.API.SensorsController sc = new Controllers.API.SensorsController(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
+            sc.PostSensor(sensor);
             lws.SendMessage(sensor);
 
             host.Run();
