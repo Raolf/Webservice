@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DataWebservice.Controllers
 {
-    //[Authorize(Policy = "Administrator")]
+    [Authorize(Policy = "Super Admin")]
     public class UserRoleController : Controller
     {
         private readonly DataWebserviceContext _context;

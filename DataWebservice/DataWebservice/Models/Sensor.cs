@@ -25,9 +25,12 @@ namespace DataWebservice.Models
             SensorDTO sensorDTO = new SensorDTO();
             sensorDTO.sensorID = this.sensorID;
             sensorDTO.servosetting = this.servoSetting;
-            foreach (Data data in this.data)
-            {
-                sensorDTO.data.Add(data.DataToDTO());
+            var tempData = data;
+            if(tempData != null) { 
+                foreach (Data data in tempData)
+                {
+                 sensorDTO.data.Add(data.DataToDTO());
+                }
             }
             return sensorDTO;
         }

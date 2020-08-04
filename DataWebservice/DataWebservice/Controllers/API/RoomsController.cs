@@ -28,13 +28,20 @@ namespace DataWebservice.Controllers.API
         public async Task<ActionResult<IEnumerable<Room>>> GetRoom()
         {
             return await _context.Room.ToListAsync();
-            //var rooms = await _context.Room.ToListAsync();
-            /*List<RoomDTO> roomDTOs = new List<RoomDTO>();
+        }
+
+
+        // GET: api/Rooms/DTO
+        [HttpGet("DTO")]
+        public async Task<ActionResult<IEnumerable<RoomDTO>>> GetRoomDTO()
+        {
+            var rooms = await _context.Room.ToListAsync();
+            List<RoomDTO> roomDTOs = new List<RoomDTO>();
             foreach (Room room in rooms)
             {
                 roomDTOs.Add(room.ToDTO());
             }
-            return roomDTOs;*/
+            return roomDTOs;
         }
 
         // GET: api/Rooms/5

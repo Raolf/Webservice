@@ -22,7 +22,8 @@ namespace DataWebservice.Controllers
         // GET: SensorLogs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.SensorLog.ToListAsync());
+            var dataWebserviceContext = _context.SensorLog.Include(s => s.sensor);
+            return View(await dataWebserviceContext.ToListAsync());
         }
 
         // GET: SensorLogs/Details/5
@@ -34,6 +35,7 @@ namespace DataWebservice.Controllers
             }
 
             var sensorLog = await _context.SensorLog
+                .Include(s => s.sensor)
                 .FirstOrDefaultAsync(m => m.sensorID == id);
             if (sensorLog == null)
             {
@@ -46,6 +48,7 @@ namespace DataWebservice.Controllers
         // GET: SensorLogs/Create
         public IActionResult Create()
         {
+            ViewData["sensorID"] = new SelectList(_context.Sensor, "sensorID", "sensorID");
             return View();
         }
 
@@ -62,6 +65,7 @@ namespace DataWebservice.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["sensorID"] = new SelectList(_context.Sensor, "sensorID", "sensorID", sensorLog.sensorID);
             return View(sensorLog);
         }
 
@@ -78,6 +82,7 @@ namespace DataWebservice.Controllers
             {
                 return NotFound();
             }
+            ViewData["sensorID"] = new SelectList(_context.Sensor, "sensorID", "sensorID", sensorLog.sensorID);
             return View(sensorLog);
         }
 
@@ -113,6 +118,7 @@ namespace DataWebservice.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["sensorID"] = new SelectList(_context.Sensor, "sensorID", "sensorID", sensorLog.sensorID);
             return View(sensorLog);
         }
 
@@ -125,6 +131,7 @@ namespace DataWebservice.Controllers
             }
 
             var sensorLog = await _context.SensorLog
+                .Include(s => s.sensor)
                 .FirstOrDefaultAsync(m => m.sensorID == id);
             if (sensorLog == null)
             {

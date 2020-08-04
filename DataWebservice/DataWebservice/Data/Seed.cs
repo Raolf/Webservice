@@ -33,10 +33,8 @@ namespace DatawebService.Data
 			}
 
 			//Create Admin
-			//var email = configuration.GetSection("Admin")["Email"];
 			var email = "admin@gmail.com";
 			var password = "Asd@123";
-			//var password = configuration.GetSection("Admin")["Password"];
 
 			var admin = new IdentityUser
 			{

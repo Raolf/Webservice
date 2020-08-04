@@ -156,8 +156,6 @@ namespace DataWebservice.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id, int userID)
         {
-            //var roomAccess = await _context.RoomAccess.FindAsync(id);
-
             var roomAccess = await _context.RoomAccess.Where(ra => ra.roomID == id && ra.userID == userID).FirstAsync();
 
             _context.RoomAccess.Remove(roomAccess);

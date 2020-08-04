@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DataWebservice.Data;
 using DataWebservice.Models;
+using DataWebservice.Models.apiDTOs;
 
 namespace DataWebservice.Controllers.API
 {
@@ -26,7 +27,23 @@ namespace DataWebservice.Controllers.API
         public async Task<ActionResult<IEnumerable<Sensor>>> GetSensor()
         {
             return await _context.Sensor.ToListAsync();
+
         }
+
+        // GET: api/Sensors/DTO
+        [HttpGet("DTO")]
+        public async Task<ActionResult<IEnumerable<SensorDTO>>> GetSensorDTO()
+        {
+            var sensors = await _context.Sensor.ToListAsync();
+
+            List<SensorDTO> sensorDTOs = new List<SensorDTO>();
+            foreach (Sensor sensor in sensors)
+            {
+                sensorDTOs.Add(sensor.ToDTO());
+            }
+            return sensorDTOs;
+        }
+
 
         // GET: api/Sensors/5
         [HttpGet("{id}")]

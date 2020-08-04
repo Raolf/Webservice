@@ -10,6 +10,7 @@ using DataWebservice.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using System.ComponentModel.DataAnnotations;
+using DataWebservice.Models.apiDTOs;
 
 namespace DataWebservice.Controllers.API
 {
@@ -20,12 +21,9 @@ namespace DataWebservice.Controllers.API
     {
         private readonly DataWebserviceContext _context;
 
-        //private IUserService _UserService;
-
-        public UsersController(DataWebserviceContext context/*, IUserService userService*/)
+        public UsersController(DataWebserviceContext context)
         {
             _context = context;
-            //_UserService = userService;
 
         }
 
@@ -36,6 +34,21 @@ namespace DataWebservice.Controllers.API
             return await _context.User.ToListAsync();
         }
 
+        // GET: api/Users/DTO
+        [HttpGet("DTO")]
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUserDTO()
+        {
+            var users = await _context.User.ToListAsync();
+
+            List<UserDTO> userDTOs = new List<UserDTO>();
+            foreach (User user in users)
+            {
+                userDTOs.Add(user.ToDTO());
+            }
+            return userDTOs;
+        }
+
+
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
@@ -44,7 +57,6 @@ namespace DataWebservice.Controllers.API
 
             var roomAccess = await _context.RoomAccess.Where(r => r.userID == user.userID).Include(r => r.room).ToListAsync();
 
-            //user.roomAccess = roomAccess;
             
 
             if (user == null)
@@ -60,7 +72,6 @@ namespace DataWebservice.Controllers.API
         [HttpPost("login")]
         public IActionResult Authenticate([FromBody]AuthenticateModel model)
         {
-            //var user = _UserService.Authenticate(model.displayName, model.password);
             var user = Authenticate(model.displayName, model.password);
 
             if (user == null)
@@ -137,13 +148,6 @@ namespace DataWebservice.Controllers.API
             return _context.User.Any(e => e.userID == id);
         }
 
-
-        public interface IUserService
-        {
-            User Authenticate(string displayName, string password);
-            
-
-        }
 
         public User Authenticate(string displayName, string password)
         {

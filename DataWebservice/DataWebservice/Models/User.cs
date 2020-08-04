@@ -1,4 +1,5 @@
-﻿using DataWebservice.Models.apiDTOs;
+﻿using DataWebservice.Controllers.API;
+using DataWebservice.Models.apiDTOs;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -26,11 +27,7 @@ namespace DataWebservice.Models
             userDTO.userID = this.userID;
             userDTO.name = this.displayName;
             userDTO.isAdmin = this.isAdmin;
-            //foreach (Room room in this.rooms)
-            //{
-            //    userDTO.rooms.Add(room.ToDTO());
-            //}
-            
+
             return userDTO;
         }
     }

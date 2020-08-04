@@ -27,6 +27,17 @@
             <span class="badge badge-info badge-pill">GET</span>
         </div>
         <div class="col-4 col-lg-2">
+            <span class="font-weight-bold">/rooms/DTO</span>
+        </div>
+        <div class="col">
+            <span>Get all rooms in DTO format</span>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="col-2 col-lg-1">
+            <span class="badge badge-info badge-pill">GET</span>
+        </div>
+        <div class="col-4 col-lg-2">
             <span class="font-weight-bold">/rooms/{id}</span>
         </div>
         <div class="col">
@@ -94,6 +105,17 @@
             <span class="font-weight-bold">/data</span>
         </div>
         <div class="col">
+            <span>Get all sensorData in DTO format</span>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="col-2 col-lg-1">
+            <span class="badge badge-info badge-pill">GET</span>
+        </div>
+        <div class="col-4 col-lg-2">
+            <span class="font-weight-bold">/dataoriginal</span>
+        </div>
+        <div class="col">
             <span>Get all sensorData</span>
         </div>
     </li>
@@ -120,12 +142,71 @@
             <span class="badge badge-info badge-pill">GET</span>
         </div>
         <div class="col-4 col-lg-2">
+            <span class="font-weight-bold">/users/DTO</span>
+        </div>
+        <div class="col">
+            <span>Get all users in DTO format</span>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="col-2 col-lg-1">
+            <span class="badge badge-info badge-pill">GET</span>
+        </div>
+        <div class="col-4 col-lg-2">
             <span class="font-weight-bold">/users/{id}</span>
         </div>
         <div class="col">
-            <span>Get user by ID - includes Rooms and Roles</span>
+            <span>Get user by ID - includes RoomAccess with Rooms</span>
         </div>
     </li>
+</ul>
+
+
+<hr />
+<h3>Sensor</h3>
+
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="col-2 col-lg-1">
+            <span class="badge badge-info badge-pill">GET</span>
+        </div>
+        <div class="col-4 col-lg-2">
+            <span class="font-weight-bold">/sensors</span>
+        </div>
+        <div class="col">
+            <span>Get all Sensors</span>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="col-2 col-lg-1">
+            <span class="badge badge-info badge-pill">GET</span>
+        </div>
+        <div class="col-4 col-lg-2">
+            <span class="font-weight-bold">/sensors/DTO</span>
+        </div>
+        <div class="col">
+            <span>Get all Sensors in DTO format</span>
+        </div>
+    </li>
+
+</ul>
+
+<hr />
+<h3>SensorLogs</h3>
+
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="col-2 col-lg-1">
+            <span class="badge badge-info badge-pill">GET</span>
+        </div>
+        <div class="col-4 col-lg-2">
+            <span class="font-weight-bold">/sensorLogs</span>
+        </div>
+        <div class="col">
+            <span>Get all SensorLogs</span>
+        </div>
+    </li>
+
 </ul>
 
 

@@ -7,67 +7,65 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DataWebservice.Data;
 using DataWebservice.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace DataWebservice.Controllers
 {
-    [Authorize(Policy = "Super Admin")]
-    public class Users2Controller : Controller
+    public class RoomsController : Controller
     {
         private readonly DataWebserviceContext _context;
 
-        public Users2Controller(DataWebserviceContext context)
+        public RoomsController(DataWebserviceContext context)
         {
             _context = context;
         }
 
-        // GET: Users2
+        // GET: Rooms
         public async Task<IActionResult> Index()
         {
-            return View(await _context.User.ToListAsync());
+            return View(await _context.Room.ToListAsync());
         }
 
-        // GET: Users2/Details/5
+        // GET: Rooms/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.userID == id);
-            if (user == null)
+            //var room = await _context.Room.Include(ra=>ra.roomAccess).ThenInclude(u=>u.user).FirstOrDefaultAsync(m => m.roomID == id);
+            var room = await _context.Room
+                .FirstOrDefaultAsync(m => m.roomID == id);
+            if (room == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(room.ToDTO());
         }
 
-        // GET: Users2/Create
+        // GET: Rooms/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Users2/Create
+        // POST: Rooms/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("userID,displayName,password,isAdmin")] User user)
+        public async Task<IActionResult> Create([Bind("roomID,roomName")] Room room)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                _context.Add(room);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(room);
         }
 
-        // GET: Users2/Edit/5
+        // GET: Rooms/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +73,22 @@ namespace DataWebservice.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
+            var room = await _context.Room.FindAsync(id);
+            if (room == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(room);
         }
 
-        // POST: Users2/Edit/5
+        // POST: Rooms/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("userID,displayName,password,isAdmin")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("roomID,roomName")] Room room)
         {
-            if (id != user.userID)
+            if (id != room.roomID)
             {
                 return NotFound();
             }
@@ -99,12 +97,12 @@ namespace DataWebservice.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(room);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.userID))
+                    if (!RoomExists(room.roomID))
                     {
                         return NotFound();
                     }
@@ -115,10 +113,10 @@ namespace DataWebservice.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(room);
         }
 
-        // GET: Users2/Delete/5
+        // GET: Rooms/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +124,30 @@ namespace DataWebservice.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.userID == id);
-            if (user == null)
+            var room = await _context.Room
+                .FirstOrDefaultAsync(m => m.roomID == id);
+            if (room == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(room);
         }
 
-        // POST: Users2/Delete/5
+        // POST: Rooms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.User.FindAsync(id);
-            _context.User.Remove(user);
+            var room = await _context.Room.FindAsync(id);
+            _context.Room.Remove(room);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool RoomExists(int id)
         {
-            return _context.User.Any(e => e.userID == id);
+            return _context.Room.Any(e => e.roomID == id);
         }
     }
 }

@@ -10,9 +10,6 @@ namespace DataWebservice.Models
 {
     public class Data
     {
-        public Data(int dataID, DateTime timestamp, int humidity, int CO2, int temperature, int sensorID, string sensorEUID)
-        {
-        }
 
         public Data()
         { }

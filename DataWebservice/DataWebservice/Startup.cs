@@ -13,9 +13,6 @@ using DataWebservice.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using DataWebservice.Models;
-
-//using Microsoft.AspNetCore.Authentication.OAuth;
-//using Microsoft.Owin.Security.OAuth;
 using Microsoft.AspNetCore.Http;
 
 namespace DataWebservice
@@ -33,8 +30,6 @@ namespace DataWebservice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddControllersWithViews();
-
             services.AddDbContext<DataWebserviceContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataWebserviceContext")));
       
@@ -56,43 +51,6 @@ namespace DataWebservice
             });
 
             services.AddScoped<LoriotWebsocket>();
-
-
-
-            /*
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequiredLength = 0;
-
-                // User settings.
-                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-
-                options.User.RequireUniqueEmail = true;
-            });
-
-
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<DataWebserviceContext>()
-                .AddDefaultUI()
-                .AddDefaultTokenProviders();
-
-
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("Administrator", policy => policy.RequireRole("Admin"));
-
-            });
-            services.Configure<IISServerOptions>(options =>
-            {
-                options.AutomaticAuthentication = false;
-            });
-    
-    */
-
 
 
         }

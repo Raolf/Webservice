@@ -71,7 +71,7 @@ namespace DataWebservice
                     logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
-            var lws = new LoriotWebsocket(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());//host.Services.GetRequiredService<LoriotWebsocket>();
+            var lws = new LoriotWebsocket(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
             lws.LoriotWebsocketStart();
             Sensor sensor = new Sensor();
             sensor.sensorEUID = "0004A30B00259F36";
@@ -79,8 +79,8 @@ namespace DataWebservice
             sensor.sensorLog = new List<SensorLog>();
             //sensor.sensorID = 2;
             Controllers.API.SensorsController sc = new Controllers.API.SensorsController(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
-            sc.PostSensor(sensor);
-            lws.SendMessage(sensor);
+            //sc.PostSensor(sensor);
+            //lws.SendMessage(sensor);
 
             host.Run();
             
