@@ -52,6 +52,10 @@ namespace DataWebservice.Data
                 ExtractFactTable();
 
                 //Transform
+                TransformData();
+                TransformRoom();
+                TransformServo();
+                TransformUser();
 
                 //Load
                 ProcessDateDim();
@@ -207,7 +211,6 @@ namespace DataWebservice.Data
             }
             _context.SaveChanges();
             //_context.FactTable.BulkInsert(factList);
-
         }
         public void TransformData()
         {
@@ -263,7 +266,7 @@ namespace DataWebservice.Data
                 }
             }
         }
-        public void transformServo()
+        public void TransformServo()
         {
             var servoList = _context.ServoDim.ToList();
             ServoDim servoTemp = null;
@@ -400,9 +403,5 @@ namespace DataWebservice.Data
             }
             _context.SaveChanges();
         }
-
-        //SecondSsinceSet = data.Timestamp.seconds-sensorLog.Timestamp.seconds;
-        //HoursSinceSet = data.Timestamp.hours-sensorLog.Timestamp.hours;
-        //DaysSince = data.Timestamp.hours-sensorLog.Timestamp.hours
     }
 }
