@@ -13,5 +13,7 @@ namespace DataWebservice.Models.Warehousing.DW
         public int DaysSinceSet { get; set; }
         public int HoursSinceSet { get; set; }
         public int SecondsSinceSet { get; set; }
+        public DateTime ValidFrom { get; set; }
+        public DateTime ValidTo { get; set; }
     }
 }

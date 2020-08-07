@@ -17,6 +17,9 @@ namespace DataWebservice.Models.Warehousing.DW
         public String Weekday { get; set; }
         public String Monthname { get; set; }
         public bool Holiday { get; set; }
+        public DateTime ValidFrom { get; set; }
+        public DateTime ValidTo { get; set; }
+
 
     }
 }

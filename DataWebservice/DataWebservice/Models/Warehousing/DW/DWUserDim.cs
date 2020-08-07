@@ -11,5 +11,7 @@ namespace DataWebservice.Models.Warehousing.DW
         public int UserID { get; set; }
         public String DisplayName { get; set; }
         public bool Admin { get; set; }
+        public DateTime ValidFrom { get; set; }
+        public DateTime ValidTo { get; set; }
     }
 }

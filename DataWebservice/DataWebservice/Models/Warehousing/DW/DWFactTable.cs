@@ -27,5 +27,7 @@ namespace DataWebservice.Models.Warehousing.DW
         public int Humidity { get; set; }
         public int CO2 { get; set; }
         public int Temperature { get; set; }
+        public DateTime ValidFrom { get; set; }
+        public DateTime ValidTo { get; set; }
     }
 }
