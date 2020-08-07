@@ -292,6 +292,10 @@ namespace DataWebservice.Data
 
         public void ProcessDateDim()
         {
+            DateTime NewLoadDate = DateTime.Now;
+            DateTime FutureDate = DateTime.MaxValue;
+
+
             var dates = _context.DWDateDim.ToList();
 
             var max = _context.Data.Max(sd => sd.timestamp).Date;
@@ -314,7 +318,9 @@ namespace DataWebservice.Data
                     Year = temp.Year,
                     Hour = temp.Hour,
                     Minute = temp.Minute,
-                    Second = temp.Second
+                    Second = temp.Second,
+                    ValidFrom = NewLoadDate,
+                    ValidTo = FutureDate
                 };
                 dateList.Add(date);
                 temp = temp.AddDays(1);
@@ -324,6 +330,9 @@ namespace DataWebservice.Data
 
         public void ProcessUserDim()
         {
+            DateTime NewLoadDate = DateTime.Now;
+            DateTime FutureDate = DateTime.MaxValue;
+
             var users = _context.DWUserDim.ToList();
             var userList = new List<DWUserDim>();
 
@@ -334,7 +343,9 @@ namespace DataWebservice.Data
                 {
                     UserID = user.UserID,
                     DisplayName = user.DisplayName,
-                    Admin = user.Admin
+                    Admin = user.Admin,
+                    ValidFrom = NewLoadDate,
+                    ValidTo = FutureDate
                 };
                 userList.Add(User);
             }
@@ -343,6 +354,9 @@ namespace DataWebservice.Data
 
         public void ProcessServoDim()
         {
+            DateTime NewLoadDate = DateTime.Now;
+            DateTime FutureDate = DateTime.MaxValue;
+
             var list = _context.Sensor.ToList();
             var servoList = new List<DWServoDim>();
             foreach (var servo in list)
@@ -354,7 +368,9 @@ namespace DataWebservice.Data
                     PD_ID = 0,
                     DaysSinceSet = 0,
                     HoursSinceSet = 0,
-                    SecondsSinceSet = 0
+                    SecondsSinceSet = 0,
+                    ValidFrom = NewLoadDate,
+                    ValidTo = FutureDate
 
                 };
                 servoList.Add(Servo);
@@ -364,6 +380,9 @@ namespace DataWebservice.Data
 
         public void ProcessRoomDim()
         {
+            DateTime NewLoadDate = DateTime.Now;
+            DateTime FutureDate = DateTime.MaxValue;
+
             var list = _context.Room.ToList();
             var roomList = new List<DWRoomDim>();
             foreach (var room in list)
@@ -372,7 +391,9 @@ namespace DataWebservice.Data
                 var Room = new DWRoomDim
                 {
                     RoomID = room.roomID,
-                    Name = room.roomName
+                    Name = room.roomName,
+                    ValidFrom = NewLoadDate,
+                    ValidTo = FutureDate
 
                 };
                 roomList.Add(Room);
