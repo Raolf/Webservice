@@ -9,6 +9,7 @@ using DataWebservice.Models.Warehousing.Stage;
 using DataWebservice.Models;
 using System.Runtime;
 using DataWebservice.Models.Warehousing.DW;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace DataWebservice.Data
 {
@@ -266,25 +267,33 @@ namespace DataWebservice.Data
         public void transformServo()
         {
             var servoList = _context.ServoDim.ToList();
+            var sensorList = _context.Sensor.ToList();
             ServoDim servoTemp = null;
             foreach (ServoDim servo in servoList)
             {
 
-                if (servo.SensorID == null)
+                
+                if(servoTemp == null)
                 {
-                    servo.SensorID = 0;
-                }
-                if (servoTemp != null)
-                {
-                    //servo.SecondsSinceSet = servo. - _context.DB.GetSensor(Stage_Servo.S_ID).GetSensorLog().GetLastItem();
+                    if (servo.SensorID == null)
+                    {
+                        servo.SensorID = 0;
+                    }
+                    if (servoTemp != null && sensorList.Where(s => s.sensorID == servo.SensorID).FirstOrDefault().servoSetting != sensorList.Where(s => s.sensorID == servoTemp.SensorID).ToList().FirstOrDefault().servoSetting)
+                    {
+                        int ts = Convert.ToInt32(servo.Timestamp.Subtract(servo.Timestamp.Date).TotalSeconds);
+                        servo.SecondsSinceSet = ts;
+                        servo.HoursSinceSet = (int)Math.Round((float)(servo.SecondsSinceSet / 3600));
+                        servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
+                    }
                 }
                 else
                 {
                     servo.SecondsSinceSet = 0;
+                    servo.HoursSinceSet = 0;
+                    servo.DaysSinceSet = 0;
                 }
-                //servo.SecondsSinceSet = servo.Timestamp. - _context.FactTable.Find("1");
-                //servo.HoursSinceSet = (int)Math.Round((float) (servo.SecondsSinceSet/3600));
-                //servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
+                            
                 servoTemp = servo;
             }
         }
