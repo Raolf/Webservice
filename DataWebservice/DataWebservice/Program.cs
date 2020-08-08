@@ -61,9 +61,11 @@ namespace DataWebservice
                     //userTests2.Can_post_delete_items();
 
 
-                    Console.WriteLine("Tests complete");                   
+                    Console.WriteLine("Tests complete");
 
 
+                    Datawarehousing datawarehousing = new Datawarehousing(host.Services.CreateScope().ServiceProvider.GetRequiredService<DataWebserviceContext>());
+                    datawarehousing.InitialLoad();
                 }
                 catch (Exception ex)
                 {

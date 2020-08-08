@@ -13,7 +13,7 @@ namespace DataWebservice.Models.Warehousing.DW
         public int Day { get; set; }
         public int Hour { get; set; }
         public int Minute { get; set; }
-        public int Second { get; set; }
+        public int Seconds { get; set; }
         public String Weekday { get; set; }
         public String Monthname { get; set; }
         public bool Holiday { get; set; }

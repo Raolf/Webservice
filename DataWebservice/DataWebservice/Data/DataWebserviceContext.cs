@@ -83,7 +83,7 @@ namespace DataWebservice.Data
             modelBuilder.Entity<UserDim>().HasKey(ud => ud.U_ID);
 
             //DW 
-            modelBuilder.Entity<DWFactTable>().HasKey(ft => ft.DataKey);
+            modelBuilder.Entity<DWFactTable>().HasKey(ft => ft.UniqueID);
 
             modelBuilder.Entity<DWDateDim>().HasKey(dd => dd.D_ID);
 
