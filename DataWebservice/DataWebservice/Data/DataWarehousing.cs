@@ -282,6 +282,13 @@ namespace DataWebservice.Data
                     {
                         servo.SensorID = 0;
                     }
+                    servo.SecondsSinceSet = 0;
+                    servo.HoursSinceSet = 0;
+                    servo.DaysSinceSet = 0;
+
+                }
+                else
+                {
                     if (servoTemp != null && sensorList.Where(s => s.sensorID == servo.SensorID).FirstOrDefault().servoSetting != sensorList.Where(s => s.sensorID == servoTemp.SensorID).ToList().FirstOrDefault().servoSetting)
                     {
                         int ts = Convert.ToInt32(servo.Timestamp.Subtract(servo.Timestamp.Date).TotalSeconds);
@@ -289,14 +296,13 @@ namespace DataWebservice.Data
                         servo.HoursSinceSet = (int)Math.Round((float)(servo.SecondsSinceSet / 3600));
                         servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
                     }
+                    else
+                    {
+                        servo.SecondsSinceSet = 0;
+                        servo.HoursSinceSet = 0;
+                        servo.DaysSinceSet = 0;
+                    }
                 }
-                else
-                {
-                    servo.SecondsSinceSet = 0;
-                    servo.HoursSinceSet = 0;
-                    servo.DaysSinceSet = 0;
-                }
-                            
                 servoTemp = servo;
             }
         }
