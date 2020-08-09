@@ -330,19 +330,30 @@ namespace DataWebservice.Data
                 }
                 else
                 {
-                    if (servoTemp != null && sensorList.Where(s => s.sensorID == servo.SensorID).FirstOrDefault().servoSetting != sensorList.Where(s => s.sensorID == servoTemp.SensorID).ToList().FirstOrDefault().servoSetting)
+                    if (servoTemp != null 
+                        && sensorList.Where(s => s.sensorID == servo.SensorID).FirstOrDefault().sensorID == sensorList.Where(s => s.sensorID == servoTemp.SensorID).FirstOrDefault().sensorID)
                     {
-                        int ts = Convert.ToInt32(servo.Timestamp.Subtract(servoTemp.Timestamp.Date).TotalSeconds);
-                        servo.SecondsSinceSet = ts;
-                        servo.HoursSinceSet = (int)Math.Round((float)(servo.SecondsSinceSet / 3600));
-                        servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
+                        int ts;
+                        if (sensorList.Where(s => s.sensorID == servo.SensorID).FirstOrDefault().servoSetting != sensorList.Where(s => s.sensorID == servoTemp.SensorID).ToList().FirstOrDefault().servoSetting)
+                        {
+                            ts = Convert.ToInt32(servo.Timestamp.Subtract(servoTemp.Timestamp.Date).TotalSeconds);
+                            servo.SecondsSinceSet = ts;
+                            servo.HoursSinceSet = (int)Math.Round((float)(servo.SecondsSinceSet / 3600));
+                            servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
+                        }
+                        else
+                        {
+                            ts = Convert.ToInt32(servo.Timestamp.Subtract(servoTemp.Timestamp).Ticks + servoTemp.Timestamp.Ticks);
+                            servo.SecondsSinceSet = ts;
+                            servo.HoursSinceSet = (int)Math.Round((float)(servo.SecondsSinceSet / 3600));
+                            servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
+                        }
                     }
                     else
                     {
-                        int ts = Convert.ToInt32(servo.Timestamp.Subtract(servoTemp.Timestamp).Ticks+servoTemp.Timestamp.Ticks);
-                        servo.SecondsSinceSet = ts;
-                        servo.HoursSinceSet = (int)Math.Round((float)(servo.SecondsSinceSet / 3600));
-                        servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
+                        servo.SecondsSinceSet = 0;
+                        servo.HoursSinceSet = 0;
+                        servo.DaysSinceSet = 0;
                     }
                 }
                 servoTemp = servo;
