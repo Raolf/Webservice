@@ -332,16 +332,17 @@ namespace DataWebservice.Data
                 {
                     if (servoTemp != null && sensorList.Where(s => s.sensorID == servo.SensorID).FirstOrDefault().servoSetting != sensorList.Where(s => s.sensorID == servoTemp.SensorID).ToList().FirstOrDefault().servoSetting)
                     {
-                        int ts = Convert.ToInt32(servo.Timestamp.Subtract(servo.Timestamp.Date).TotalSeconds);
+                        int ts = Convert.ToInt32(servo.Timestamp.Subtract(servoTemp.Timestamp.Date).TotalSeconds);
                         servo.SecondsSinceSet = ts;
                         servo.HoursSinceSet = (int)Math.Round((float)(servo.SecondsSinceSet / 3600));
                         servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
                     }
                     else
                     {
-                        servo.SecondsSinceSet = 0;
-                        servo.HoursSinceSet = 0;
-                        servo.DaysSinceSet = 0;
+                        int ts = Convert.ToInt32(servo.Timestamp.Subtract(servoTemp.Timestamp).Ticks+servoTemp.Timestamp.Ticks);
+                        servo.SecondsSinceSet = ts;
+                        servo.HoursSinceSet = (int)Math.Round((float)(servo.SecondsSinceSet / 3600));
+                        servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
                     }
                 }
                 servoTemp = servo;
