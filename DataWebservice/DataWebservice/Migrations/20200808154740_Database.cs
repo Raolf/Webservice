@@ -78,10 +78,12 @@ namespace DataWebservice.Migrations
                     Day = table.Column<int>(nullable: false),
                     Hour = table.Column<int>(nullable: false),
                     Minute = table.Column<int>(nullable: false),
-                    Second = table.Column<int>(nullable: false),
+                    Seconds = table.Column<int>(nullable: false),
                     Weekday = table.Column<string>(nullable: true),
                     Monthname = table.Column<string>(nullable: true),
-                    Holiday = table.Column<bool>(nullable: false)
+                    Holiday = table.Column<bool>(nullable: false),
+                    ValidFrom = table.Column<DateTime>(nullable: false),
+                    ValidTo = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,9 +94,9 @@ namespace DataWebservice.Migrations
                 name: "DWFactTable",
                 columns: table => new
                 {
-                    DataKey = table.Column<int>(nullable: false)
+                    UniqueID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UniqueID = table.Column<int>(nullable: false),
+                    DataKey = table.Column<int>(nullable: false),
                     D_ID = table.Column<int>(nullable: false),
                     R_ID = table.Column<int>(nullable: false),
                     S_ID = table.Column<int>(nullable: false),
@@ -102,11 +104,13 @@ namespace DataWebservice.Migrations
                     Servosetting = table.Column<string>(nullable: true),
                     Humidity = table.Column<int>(nullable: false),
                     CO2 = table.Column<int>(nullable: false),
-                    Temperature = table.Column<int>(nullable: false)
+                    Temperature = table.Column<int>(nullable: false),
+                    ValidFrom = table.Column<DateTime>(nullable: false),
+                    ValidTo = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DWFactTable", x => x.DataKey);
+                    table.PrimaryKey("PK_DWFactTable", x => x.UniqueID);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,7 +120,9 @@ namespace DataWebservice.Migrations
                     R_ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoomID = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    ValidFrom = table.Column<DateTime>(nullable: false),
+                    ValidTo = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -133,7 +139,9 @@ namespace DataWebservice.Migrations
                     PD_ID = table.Column<int>(nullable: false),
                     DaysSinceSet = table.Column<int>(nullable: false),
                     HoursSinceSet = table.Column<int>(nullable: false),
-                    SecondsSinceSet = table.Column<int>(nullable: false)
+                    SecondsSinceSet = table.Column<int>(nullable: false),
+                    ValidFrom = table.Column<DateTime>(nullable: false),
+                    ValidTo = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -148,7 +156,9 @@ namespace DataWebservice.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserID = table.Column<int>(nullable: false),
                     DisplayName = table.Column<string>(nullable: true),
-                    Admin = table.Column<bool>(nullable: false)
+                    Admin = table.Column<bool>(nullable: false),
+                    ValidFrom = table.Column<DateTime>(nullable: false),
+                    ValidTo = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

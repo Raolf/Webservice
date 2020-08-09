@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataWebservice.Migrations
 {
     [DbContext(typeof(DataWebserviceContext))]
-    [Migration("20200729115048_Database")]
+    [Migration("20200808154740_Database")]
     partial class Database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -164,8 +164,14 @@ namespace DataWebservice.Migrations
                     b.Property<string>("Monthname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Second")
+                    b.Property<int>("Seconds")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("ValidFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ValidTo")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Weekday")
                         .HasColumnType("nvarchar(max)");
@@ -180,7 +186,7 @@ namespace DataWebservice.Migrations
 
             modelBuilder.Entity("DataWebservice.Models.Warehousing.DW.DWFactTable", b =>
                 {
-                    b.Property<int>("DataKey")
+                    b.Property<int>("UniqueID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -189,6 +195,9 @@ namespace DataWebservice.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("D_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DataKey")
                         .HasColumnType("int");
 
                     b.Property<int>("Humidity")
@@ -209,10 +218,13 @@ namespace DataWebservice.Migrations
                     b.Property<int>("U_ID")
                         .HasColumnType("int");
 
-                    b.Property<int>("UniqueID")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("ValidFrom")
+                        .HasColumnType("datetime2");
 
-                    b.HasKey("DataKey");
+                    b.Property<DateTime>("ValidTo")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("UniqueID");
 
                     b.ToTable("DWFactTable");
                 });
@@ -229,6 +241,12 @@ namespace DataWebservice.Migrations
 
                     b.Property<int>("RoomID")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("ValidFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ValidTo")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("R_ID");
 
@@ -257,6 +275,12 @@ namespace DataWebservice.Migrations
                     b.Property<int>("SensorID")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("ValidFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ValidTo")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("S_ID");
 
                     b.ToTable("DWServoDim");
@@ -277,6 +301,12 @@ namespace DataWebservice.Migrations
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("ValidFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ValidTo")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("U_ID");
 

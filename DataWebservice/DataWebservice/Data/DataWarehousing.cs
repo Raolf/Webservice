@@ -18,26 +18,45 @@ namespace DataWebservice.Data
         private readonly DataWebserviceContext _context;
 
 
-        public Datawarehousing()
+        public Datawarehousing(DataWebserviceContext dataWebserviceContext)
         {
-            _context = new DataWebserviceContext();
+            this._context = dataWebserviceContext;
         }
 
-
-        public async void InitialLoad()
+        public void InitialLoad()
         {
             //Truncate Tables for a clean start
-            await _context.Database.ExecuteSqlRawAsync("truncate table FactTable");
-            await _context.Database.ExecuteSqlRawAsync("truncate table FactTable");
-            await _context.Database.ExecuteSqlRawAsync("truncate table RoomDim");
-            await _context.Database.ExecuteSqlRawAsync("truncate table ServoDim");
-            await _context.Database.ExecuteSqlRawAsync("truncate table UserDim");
+            _context.Database.ExecuteSqlRawAsync("truncate table FactTable");
+             _context.Database.ExecuteSqlRawAsync("truncate table FactTable");
+             _context.Database.ExecuteSqlRawAsync("truncate table RoomDim");
+             _context.Database.ExecuteSqlRawAsync("truncate table ServoDim");
+             _context.Database.ExecuteSqlRawAsync("truncate table UserDim");
 
+             _context.Database.ExecuteSqlRawAsync("truncate table DWFactTable");
+             _context.Database.ExecuteSqlRawAsync("truncate table DWFactTable");
+             _context.Database.ExecuteSqlRawAsync("truncate table DWRoomDim");
+             _context.Database.ExecuteSqlRawAsync("truncate table DWServoDim");
+             _context.Database.ExecuteSqlRawAsync("truncate table DWUserDim");
+
+            //Load data into stage
             ExtractDate();
             ExtractRoom();
             ExtractServo();
             ExtractUser();
             ExtractFactTable();
+
+            //Transform
+            TransformData();
+            TransformRoom();
+            TransformServo();
+            TransformUser();
+
+            //Load
+            ProcessDateDim();
+            ProcessRoomDim();
+            ProcessUserDim();
+            ProcessServoDim();
+            LoadData();
         }
 
         public void IncrementalLoad()
@@ -71,20 +90,29 @@ namespace DataWebservice.Data
 
         public void LoadData()
         {
+            DateTime NewLoadDate = DateTime.Now;
+            DateTime FutureDate = DateTime.MaxValue;
+
             var factData = _context.Sensor.ToList();
             var factList = new List<DWFactTable>();
             foreach (var fact in factData)
             {
                 var data = _context.Data.FirstOrDefault(r => r.sensorID == fact.sensorID);
+                if (data != null)
+                {                               
 
                 var Fact = new DWFactTable
                 {
                     Servosetting = fact.servoSetting,
                     Humidity = data.humidity,
                     CO2 = data.CO2,
-                    Temperature = data.temperature
+                    Temperature = data.temperature,
+                    ValidFrom = NewLoadDate,
+                    ValidTo = FutureDate
                 };
                 factList.Add(Fact);
+                _context.DWFactTable.Add(Fact);
+                }
             }
             _context.SaveChanges();
         }
@@ -98,7 +126,7 @@ namespace DataWebservice.Data
             {
                 var Date = new DateDim
                 {
-                    D_ID = 0,
+                    //D_ID = 0,
                     Year = date.timestamp.Year,
                     Month = date.timestamp.Month,
                     Day = date.timestamp.Day,
@@ -111,6 +139,7 @@ namespace DataWebservice.Data
 
                 };
                 dateList.Add(Date);
+                _context.DateDim.Add(Date);
             }
             _context.SaveChanges();
             //_context.FactTable.BulkInsert(dateList);
@@ -126,12 +155,14 @@ namespace DataWebservice.Data
 
                 var Room = new RoomDim
                 {
-                    R_ID = 0,
+                    //R_ID = 0,
                     RoomID = room.roomID,
                     Name = room.roomName
 
                 };
                 roomList.Add(Room);
+                _context.RoomDim.Add(Room);
+                
             }
             _context.SaveChanges();
             //_context.FactTable.BulkInsert(roomList);
@@ -145,10 +176,13 @@ namespace DataWebservice.Data
             foreach (var servo in ServoList)
             {
                 var sensorlog = _context.SensorLog.FirstOrDefault(r => r.sensorID == servo.sensorID);
+                if (sensorlog != null) 
+                { 
+                    
 
                 var Servo = new ServoDim
                 {
-                    S_ID = 0,
+                    //S_ID = 0,
                     SensorID = servo.sensorID,
                     PD_ID = 0,
                     DaysSinceSet = 0,
@@ -158,6 +192,8 @@ namespace DataWebservice.Data
 
                 };
                 servoList.Add(Servo);
+                _context.ServoDim.Add(Servo);
+                }
             }
             _context.SaveChanges();
             //_context.FactTable.BulkInsert(servoList);
@@ -174,13 +210,14 @@ namespace DataWebservice.Data
                 var User = new UserDim
                 {
 
-                    U_ID = 0,
+                    //U_ID = 0,
                     UserID = user.userID,
                     DisplayName = user.displayName,
                     Admin = user.isAdmin
 
                 };
                 userList.Add(User);
+                _context.UserDim.Add(User);
             }
             _context.SaveChanges();
             //_context.FactTable.BulkInsert(userList);
@@ -195,10 +232,12 @@ namespace DataWebservice.Data
             foreach (var fact in factData)
             {
                 var data = _context.Data.FirstOrDefault(r => r.sensorID == fact.sensorID);
-
+                if (data != null)
+                {
+                                 
                 var Fact = new FactTable
                 {
-                    UniqueID = 0,
+                    //UniqueID = 0,
                     D_ID = 0,
                     R_ID = 0,
                     S_ID = 0,
@@ -209,6 +248,8 @@ namespace DataWebservice.Data
                     Temperature = data.temperature
                 };
                 factList.Add(Fact);
+                _context.FactTable.Add(Fact);
+                }
             }
             _context.SaveChanges();
             //_context.FactTable.BulkInsert(factList);
@@ -314,7 +355,7 @@ namespace DataWebservice.Data
             DateTime FutureDate = DateTime.MaxValue;
 
 
-            var dates = _context.DWDateDim.ToList();
+            var dates = _context.DateDim.ToList();
 
             var max = _context.Data.Max(sd => sd.timestamp).Date;
             var min = _context.Data.Min(sd => sd.timestamp).Date;
@@ -329,6 +370,7 @@ namespace DataWebservice.Data
             {
                 var date = new DWDateDim
                 {
+                  
                     Day = temp.Day,
                     Month = temp.Month,
                     Monthname = cultureInfo.DateTimeFormat.GetAbbreviatedMonthName(temp.Month),
@@ -336,11 +378,12 @@ namespace DataWebservice.Data
                     Year = temp.Year,
                     Hour = temp.Hour,
                     Minute = temp.Minute,
-                    Second = temp.Second,
+                    Seconds = temp.Second,
                     ValidFrom = NewLoadDate,
                     ValidTo = FutureDate
                 };
                 dateList.Add(date);
+                _context.DWDateDim.Add(date);
                 temp = temp.AddDays(1);
             }
             _context.SaveChanges();
@@ -351,7 +394,7 @@ namespace DataWebservice.Data
             DateTime NewLoadDate = DateTime.Now;
             DateTime FutureDate = DateTime.MaxValue;
 
-            var users = _context.DWUserDim.ToList();
+            var users = _context.UserDim.ToList();
             var userList = new List<DWUserDim>();
 
             foreach (var user in users)
@@ -366,6 +409,7 @@ namespace DataWebservice.Data
                     ValidTo = FutureDate
                 };
                 userList.Add(User);
+                _context.DWUserDim.Add(User);
             }
             _context.SaveChanges();
         }
@@ -375,14 +419,14 @@ namespace DataWebservice.Data
             DateTime NewLoadDate = DateTime.Now;
             DateTime FutureDate = DateTime.MaxValue;
 
-            var list = _context.Sensor.ToList();
+            var list = _context.ServoDim.ToList();
             var servoList = new List<DWServoDim>();
             foreach (var servo in list)
             {
 
                 var Servo = new DWServoDim
                 {
-                    SensorID = servo.sensorID,
+                    SensorID = servo.SensorID,
                     PD_ID = 0,
                     DaysSinceSet = 0,
                     HoursSinceSet = 0,
@@ -392,6 +436,7 @@ namespace DataWebservice.Data
 
                 };
                 servoList.Add(Servo);
+                _context.DWServoDim.Add(Servo);
             }
             _context.SaveChanges();
         }
@@ -401,20 +446,21 @@ namespace DataWebservice.Data
             DateTime NewLoadDate = DateTime.Now;
             DateTime FutureDate = DateTime.MaxValue;
 
-            var list = _context.Room.ToList();
+            var list = _context.RoomDim.ToList();
             var roomList = new List<DWRoomDim>();
             foreach (var room in list)
             {
 
                 var Room = new DWRoomDim
                 {
-                    RoomID = room.roomID,
-                    Name = room.roomName,
+                    RoomID = room.RoomID,
+                    Name = room.Name,
                     ValidFrom = NewLoadDate,
                     ValidTo = FutureDate
 
                 };
                 roomList.Add(Room);
+                _context.DWRoomDim.Add(Room);
             }
             _context.SaveChanges();
         }
