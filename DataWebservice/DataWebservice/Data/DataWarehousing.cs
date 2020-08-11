@@ -334,7 +334,7 @@ namespace DataWebservice.Data
                         && sensorList.Where(s => s.sensorID == servo.SensorID).FirstOrDefault().sensorID == sensorList.Where(s => s.sensorID == servoTemp.SensorID).FirstOrDefault().sensorID)
                     {
                         int ts;
-                        if (sensorList.Where(s => s.sensorID == servo.SensorID).FirstOrDefault().servoSetting != sensorList.Where(s => s.sensorID == servoTemp.SensorID).ToList().FirstOrDefault().servoSetting)
+                        if (sensorList.Where(s => s.sensorID == servo.SensorID).FirstOrDefault().sensorLog.Where(s=>s.timestamp == servo.Timestamp).FirstOrDefault().servoSetting != sensorList.Where(s => s.sensorID == servoTemp.SensorID).ToList().FirstOrDefault().sensorLog.Where(s => s.timestamp == servoTemp.Timestamp).FirstOrDefault().servoSetting)
                         {
                             ts = Convert.ToInt32(servo.Timestamp.Subtract(servoTemp.Timestamp.Date).TotalSeconds);
                             servo.SecondsSinceSet = ts;
