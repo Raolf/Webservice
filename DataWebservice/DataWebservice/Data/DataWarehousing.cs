@@ -78,7 +78,8 @@ namespace DataWebservice.Data
                 TransformUser();
 
                 //Load
-                ProcessDateDim();
+                //ProcessDateDim();
+                ProcessDateDim2();
                 ProcessRoomDim();
                 ProcessUserDim();
                 ProcessServoDim();
@@ -375,7 +376,7 @@ namespace DataWebservice.Data
                         }
                         else
                         {
-                            ts = Convert.ToInt32(servo.Timestamp.Subtract(servoTemp.Timestamp).Ticks + servoTemp.Timestamp.Ticks);
+                            ts = Convert.ToInt32(servo.Timestamp.Subtract(servoTemp.Timestamp).Ticks);
                             servo.SecondsSinceSet = ts;
                             servo.HoursSinceSet = (int)Math.Round((float)(servo.SecondsSinceSet / 3600));
                             servo.DaysSinceSet = (int)Math.Round((float)servo.HoursSinceSet / 24);
@@ -429,6 +430,48 @@ namespace DataWebservice.Data
                 dateList.Add(date);
                 _context.DWDateDim.Add(date);
                 temp = temp.AddDays(1);
+            }
+            _context.SaveChanges();
+        }
+
+        public void ProcessDateDim2()
+        {
+            DateTime NewLoadDate = DateTime.Now;
+            DateTime FutureDate = DateTime.MaxValue;
+
+
+            var dates = _context.DateDim.ToList();
+
+            var dateList = new List<DWDateDim>();
+            var cultureInfo = new CultureInfo("en-US");
+            var calendar = cultureInfo.Calendar;
+
+
+
+            foreach (var temp in dates)
+            {
+                var date = new DWDateDim
+                {
+                    D_ID = temp.D_ID,
+                    Day = temp.Day,
+                    Month = temp.Month,
+                    Monthname = cultureInfo.DateTimeFormat.GetAbbreviatedMonthName(temp.Month),
+                    Weekday = temp.Weekday,
+                    Year = temp.Year,
+                    Hour = temp.Hour,
+                    Minute = temp.Minute,
+                    Seconds = temp.Seconds,
+                    ValidFrom = NewLoadDate,
+                    ValidTo = FutureDate
+                };
+                              
+                var tempdate = _context.DWDateDim.Find(date.D_ID);
+                if (tempdate ==null)
+                {
+                    dateList.Add(date);
+                    _context.DWDateDim.Add(date);
+                }               
+                
             }
             _context.SaveChanges();
         }
