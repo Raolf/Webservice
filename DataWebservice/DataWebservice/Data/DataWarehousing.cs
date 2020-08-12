@@ -39,7 +39,7 @@ namespace DataWebservice.Data
              _context.Database.ExecuteSqlRawAsync("truncate table DWUserDim");
 
             //Load data into stage
-            ExtractDate();
+            ExtractDate(false);
             ExtractRoom();
             ExtractServo();
             ExtractUser();
@@ -65,7 +65,7 @@ namespace DataWebservice.Data
             {
 
                 //Load data into stage
-                ExtractDate();
+                ExtractDate(true);
                 ExtractRoom();
                 ExtractServo();
                 ExtractUser();
@@ -94,7 +94,7 @@ namespace DataWebservice.Data
             DateTime FutureDate = DateTime.MaxValue;
 
             var factData = _context.Sensor.ToList();
-            var factList = new List<DWFactTable>();
+            var factList = new List<DWFactTable>();          
             foreach (var fact in factData)
             {
                 var data = _context.Data.FirstOrDefault(r => r.sensorID == fact.sensorID);
@@ -118,29 +118,61 @@ namespace DataWebservice.Data
         }
 
 
-        public void ExtractDate()
+        public void ExtractDate(bool inc)
         {
             var DateList = _context.SensorLog.ToList();
             var dateList = new List<DateDim>();
-            foreach (var date in DateList)
+            if (inc == true)
             {
-                var Date = new DateDim
+                
+                if(DateList.Count > _context.DateDim.ToList().Count)
                 {
-                    //D_ID = 0,
-                    Year = date.timestamp.Year,
-                    Month = date.timestamp.Month,
-                    Day = date.timestamp.Day,
-                    Hour = date.timestamp.Hour,
-                    Minute = date.timestamp.Minute,
-                    Seconds = date.timestamp.Second,
-                    Weekday = date.timestamp.ToString("dddd"),
-                    Monthname = date.timestamp.ToString("MMMM"),
-                    Holiday = false
+                    for(int i = _context.DateDim.ToList().Count; i<DateList.Count; i++)
+                    {
+                        var date = DateList[i];
+                        var Date = new DateDim
+                        {
+                            //D_ID = 0,
+                            Year = date.timestamp.Year,
+                            Month = date.timestamp.Month,
+                            Day = date.timestamp.Day,
+                            Hour = date.timestamp.Hour,
+                            Minute = date.timestamp.Minute,
+                            Seconds = date.timestamp.Second,
+                            Weekday = date.timestamp.ToString("dddd"),
+                            Monthname = date.timestamp.ToString("MMMM"),
+                            Holiday = false
 
-                };
-                dateList.Add(Date);
-                _context.DateDim.Add(Date);
+                        };
+                        
+                        _context.DateDim.Add(Date);
+                    }
+                }
             }
+            else
+            {
+            foreach (var date in DateList)
+                        {
+                            var Date = new DateDim
+                            {
+                                //D_ID = 0,
+                                Year = date.timestamp.Year,
+                                Month = date.timestamp.Month,
+                                Day = date.timestamp.Day,
+                                Hour = date.timestamp.Hour,
+                                Minute = date.timestamp.Minute,
+                                Seconds = date.timestamp.Second,
+                                Weekday = date.timestamp.ToString("dddd"),
+                                Monthname = date.timestamp.ToString("MMMM"),
+                                Holiday = false
+
+                            };
+                            dateList.Add(Date);
+                            _context.DateDim.Add(Date);
+                        }
+            }
+
+            
             _context.SaveChanges();
             //_context.FactTable.BulkInsert(dateList);
 
