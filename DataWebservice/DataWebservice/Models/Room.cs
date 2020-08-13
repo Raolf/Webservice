@@ -23,8 +23,10 @@ namespace DataWebservice.Models
             RoomDTO roomDTO = new RoomDTO();
             roomDTO.roomID = this.roomID;
             roomDTO.name = this.roomName;
+            if(sensors != null)
             foreach(Sensor sensor in this.sensors)
             {
+                
                 roomDTO.sensors.Add(sensor.ToDTO());
             }
             return roomDTO;

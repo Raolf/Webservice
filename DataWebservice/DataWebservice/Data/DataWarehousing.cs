@@ -34,26 +34,22 @@ namespace DataWebservice.Data
                 _context.Database.ExecuteSqlRawAsync("truncate table RoomDim");
                 _context.Database.ExecuteSqlRawAsync("truncate table ServoDim");
                 _context.Database.ExecuteSqlRawAsync("truncate table UserDim");
-
                 _context.Database.ExecuteSqlRawAsync("truncate table DWFactTable");
                 _context.Database.ExecuteSqlRawAsync("truncate table DWFactTable");
                 _context.Database.ExecuteSqlRawAsync("truncate table DWRoomDim");
                 _context.Database.ExecuteSqlRawAsync("truncate table DWServoDim");
                 _context.Database.ExecuteSqlRawAsync("truncate table DWUserDim");
-
                 //Load data into stage
                 ExtractDate(false);
                 ExtractRoom(false);
                 ExtractServo(false);
                 ExtractUser(false);
                 ExtractFactTable(false);
-
                 //Transform
                 TransformData();
                 TransformRoom();
                 TransformServo();
                 TransformUser();
-
                 //Load
                 ProcessDateDim();
                 ProcessRoomDim();
@@ -79,9 +75,8 @@ namespace DataWebservice.Data
             TransformServo();
             TransformUser();
 
-            //Load
-            //ProcessDateDim();
-            ProcessDateDim2();
+            //Load           
+            ProcessDateDim();
             ProcessRoomDim();
             ProcessUserDim();
             ProcessServoDim();
@@ -96,8 +91,7 @@ namespace DataWebservice.Data
             DateTime NewLoadDate = DateTime.Now;
             DateTime FutureDate = DateTime.MaxValue;
 
-            var factData = _context.Sensor.ToList();
-            var factList = new List<DWFactTable>();          
+            var factData = _context.Sensor.ToList();      
             foreach (var fact in factData)
             {
                 var data = _context.Data.FirstOrDefault(r => r.sensorID == fact.sensorID);
@@ -113,7 +107,6 @@ namespace DataWebservice.Data
                     ValidFrom = NewLoadDate,
                     ValidTo = FutureDate
                 };
-                factList.Add(Fact);
                 _context.DWFactTable.Add(Fact);
                 }
             }
@@ -124,10 +117,8 @@ namespace DataWebservice.Data
         public void ExtractDate(bool inc)
         {
             var DateList = _context.SensorLog.ToList();
-            var dateList = new List<DateDim>();
             if (inc == true)
             {
-
                 if (DateList.Count > _context.DateDim.ToList().Count)
                 {
                     for (int i = _context.DateDim.ToList().Count; i < DateList.Count; i++)
@@ -135,7 +126,6 @@ namespace DataWebservice.Data
                         var date = DateList[i];
                         var Date = new DateDim
                         {
-                            //D_ID = 0,
                             Year = date.timestamp.Year,
                             Month = date.timestamp.Month,
                             Day = date.timestamp.Day,
@@ -147,7 +137,6 @@ namespace DataWebservice.Data
                             Holiday = false
 
                         };
-
                         _context.DateDim.Add(Date);
                     }
                 }
@@ -158,7 +147,6 @@ namespace DataWebservice.Data
                 {
                     var Date = new DateDim
                     {
-                        //D_ID = 0,
                         Year = date.timestamp.Year,
                         Month = date.timestamp.Month,
                         Day = date.timestamp.Day,
@@ -170,21 +158,15 @@ namespace DataWebservice.Data
                         Holiday = false
 
                     };
-                    dateList.Add(Date);
                     _context.DateDim.Add(Date);
                 }
             }
-
-
             _context.SaveChanges();
-            //_context.FactTable.BulkInsert(dateList);
-
         }
 
         public void ExtractRoom(bool inc)
         {
             var RoomList = _context.Room.ToList();
-            var roomList = new List<RoomDim>();
             if (inc == true)
             {
 
@@ -195,12 +177,10 @@ namespace DataWebservice.Data
                         var room = RoomList[i];
                         var Room = new RoomDim
                         {
-                            //R_ID = 0,
                             RoomID = room.roomID,
                             Name = room.roomName
 
                         };
-                        roomList.Add(Room);
                         _context.RoomDim.Add(Room);
                     }
                 }
@@ -212,24 +192,20 @@ namespace DataWebservice.Data
 
                     var Room = new RoomDim
                     {
-                        //R_ID = 0,
                         RoomID = room.roomID,
                         Name = room.roomName
 
                     };
-                    roomList.Add(Room);
                     _context.RoomDim.Add(Room);
 
                 }
             }
             _context.SaveChanges();
-            //_context.FactTable.BulkInsert(roomList);
         }
 
         public void ExtractServo(bool inc)
         {
             var ServoList = _context.Sensor.ToList();
-            var servoList = new List<ServoDim>();
             if (inc == true)
             {
                 if (ServoList.Count > _context.ServoDim.ToList().Count)
@@ -242,7 +218,6 @@ namespace DataWebservice.Data
                         {
                             var Servo = new ServoDim
                             {
-                                //S_ID = 0,
                                 SensorID = servo.sensorID,
                                 PD_ID = 0,
                                 DaysSinceSet = 0,
@@ -251,7 +226,6 @@ namespace DataWebservice.Data
                                 Timestamp = sensorlog.timestamp
 
                             };
-                            servoList.Add(Servo);
                             _context.ServoDim.Add(Servo);
                         }
                     }
@@ -264,11 +238,8 @@ namespace DataWebservice.Data
                     var sensorlog = _context.SensorLog.FirstOrDefault(r => r.sensorID == servo.sensorID);
                     if (sensorlog != null)
                     {
-
-
                         var Servo = new ServoDim
                         {
-                            //S_ID = 0,
                             SensorID = servo.sensorID,
                             PD_ID = 0,
                             DaysSinceSet = 0,
@@ -277,21 +248,17 @@ namespace DataWebservice.Data
                             Timestamp = sensorlog.timestamp
 
                         };
-                        servoList.Add(Servo);
                         _context.ServoDim.Add(Servo);
                     }
                 }
             }
             
             _context.SaveChanges();
-            //_context.FactTable.BulkInsert(servoList);
-
         }
 
         public void ExtractUser(bool inc)
         {
             var userData = _context.User.ToList();
-            var userList = new List<UserDim>();
             if (inc == true)
             {
                 if (userData.Count > _context.UserDim.ToList().Count)
@@ -301,14 +268,11 @@ namespace DataWebservice.Data
                         var user = userData[i];
                         var User = new UserDim
                         {
-
-                            //U_ID = 0,
                             UserID = user.userID,
                             DisplayName = user.displayName,
                             Admin = user.isAdmin
 
                         };
-                        userList.Add(User);
                         _context.UserDim.Add(User);
                     }
                 }
@@ -317,32 +281,23 @@ namespace DataWebservice.Data
             {
                 foreach (var user in userData)
                 {
-
                     var User = new UserDim
                     {
-
-                        //U_ID = 0,
                         UserID = user.userID,
                         DisplayName = user.displayName,
                         Admin = user.isAdmin
 
                     };
-                    userList.Add(User);
                     _context.UserDim.Add(User);
                 }
-            }
-            
+            }       
             _context.SaveChanges();
-            //_context.FactTable.BulkInsert(userList);
-
         }
 
 
         public void ExtractFactTable(bool inc)
         {
-            //var factData = _context.Sensor.ToList();
             var Data = _context.Data.ToList();
-            var factList = new List<FactTable>();
             if (inc == true)
             {
                 if (Data.Count > _context.FactTable.ToList().Count)
@@ -351,14 +306,10 @@ namespace DataWebservice.Data
                     {
                         var fact = Data[i];
                         var sensor = _context.Sensor.FirstOrDefault(s => s.sensorID == fact.sensorID);
-                        //var data = _context.Data.FirstOrDefault(r => r.sensorID == fact.sensorID);
-
                         if (sensor != null)
                         {
-
                             var Fact = new FactTable
                             {
-                                //UniqueID = 0,
                                 D_ID = 0,
                                 R_ID = 0,
                                 S_ID = 0,
@@ -368,7 +319,6 @@ namespace DataWebservice.Data
                                 CO2 = fact.CO2,
                                 Temperature = fact.temperature
                             };
-                            factList.Add(Fact);
                             _context.FactTable.Add(Fact);
                         }
                     }
@@ -379,14 +329,10 @@ namespace DataWebservice.Data
                 foreach (var fact in Data)
                 {
                     var sensor = _context.Sensor.FirstOrDefault(s => s.sensorID == fact.sensorID);
-                    //var data = _context.Data.FirstOrDefault(r => r.sensorID == fact.sensorID);
-
                     if (sensor != null)
                     {
-
                         var Fact = new FactTable
                         {
-                            //UniqueID = 0,
                             D_ID = 0,
                             R_ID = 0,
                             S_ID = 0,
@@ -396,14 +342,13 @@ namespace DataWebservice.Data
                             CO2 = fact.CO2,
                             Temperature = fact.temperature
                         };
-                        factList.Add(Fact);
                         _context.FactTable.Add(Fact);
                     }
                 }
             }           
             _context.SaveChanges();
-            //_context.FactTable.BulkInsert(factList);
         }
+
         public void TransformData()
         {
             var factList = _context.FactTable.ToList();
@@ -510,61 +455,15 @@ namespace DataWebservice.Data
             }
         }
 
-
         public void ProcessDateDim()
         {
             DateTime NewLoadDate = DateTime.Now;
             DateTime FutureDate = DateTime.MaxValue;
 
-
             var dates = _context.DateDim.ToList();
 
-            var max = _context.Data.Max(sd => sd.timestamp).Date;
-            var min = _context.Data.Min(sd => sd.timestamp).Date;
-            var temp = min;
-
-            var dateList = new List<DWDateDim>();
             var cultureInfo = new CultureInfo("en-US");
             var calendar = cultureInfo.Calendar;
-
-
-            while (temp <= max)
-            {
-                var date = new DWDateDim
-                {
-                  
-                    Day = temp.Day,
-                    Month = temp.Month,
-                    Monthname = cultureInfo.DateTimeFormat.GetAbbreviatedMonthName(temp.Month),
-                    Weekday = Enum.GetName(typeof(DayOfWeek), temp.DayOfWeek),
-                    Year = temp.Year,
-                    Hour = temp.Hour,
-                    Minute = temp.Minute,
-                    Seconds = temp.Second,
-                    ValidFrom = NewLoadDate,
-                    ValidTo = FutureDate
-                };
-                dateList.Add(date);
-                _context.DWDateDim.Add(date);
-                temp = temp.AddDays(1);
-            }
-            _context.SaveChanges();
-        }
-
-        public void ProcessDateDim2()
-        {
-            DateTime NewLoadDate = DateTime.Now;
-            DateTime FutureDate = DateTime.MaxValue;
-
-
-            var dates = _context.DateDim.ToList();
-
-            var dateList = new List<DWDateDim>();
-            var cultureInfo = new CultureInfo("en-US");
-            var calendar = cultureInfo.Calendar;
-
-
-
             foreach (var temp in dates)
             {
                 var date = new DWDateDim
@@ -580,15 +479,12 @@ namespace DataWebservice.Data
                     Seconds = temp.Seconds,
                     ValidFrom = NewLoadDate,
                     ValidTo = FutureDate
-                };
-                              
+                };                              
                 var tempdate = _context.DWDateDim.Find(date.D_ID);
                 if (tempdate ==null)
                 {
-                    dateList.Add(date);
                     _context.DWDateDim.Add(date);
-                }               
-                
+                }                               
             }
             _context.SaveChanges();
         }
@@ -599,8 +495,6 @@ namespace DataWebservice.Data
             DateTime FutureDate = DateTime.MaxValue;
 
             var users = _context.UserDim.ToList();
-            var userList = new List<DWUserDim>();
-
             foreach (var user in users)
             {
 
@@ -617,7 +511,6 @@ namespace DataWebservice.Data
                 var tempdata = _context.DWUserDim.Find(User.U_ID);
                 if (tempdata == null)
                 {
-                    userList.Add(User);
                     _context.DWUserDim.Add(User);
                 }
                
@@ -631,10 +524,8 @@ namespace DataWebservice.Data
             DateTime FutureDate = DateTime.MaxValue;
 
             var list = _context.ServoDim.ToList();
-            var servoList = new List<DWServoDim>();
             foreach (var servo in list)
             {
-
                 var Servo = new DWServoDim
                 {
                     S_ID = servo.S_ID,
@@ -645,15 +536,12 @@ namespace DataWebservice.Data
                     SecondsSinceSet = 0,
                     ValidFrom = NewLoadDate,
                     ValidTo = FutureDate
-
                 };
                 var tempdata = _context.DWServoDim.Find(Servo.S_ID);
                 if (tempdata == null)
                 {
-                    servoList.Add(Servo);
                     _context.DWServoDim.Add(Servo);
-                }
-                
+                }             
             }
             _context.SaveChanges();
         }
@@ -664,10 +552,8 @@ namespace DataWebservice.Data
             DateTime FutureDate = DateTime.MaxValue;
 
             var list = _context.RoomDim.ToList();
-            var roomList = new List<DWRoomDim>();
             foreach (var room in list)
             {
-
                 var Room = new DWRoomDim
                 {
                     R_ID = room.R_ID,
@@ -675,15 +561,12 @@ namespace DataWebservice.Data
                     Name = room.Name,
                     ValidFrom = NewLoadDate,
                     ValidTo = FutureDate
-
                 };
                 var tempdata = _context.DWRoomDim.Find(Room.R_ID);
                 if (tempdata == null)
                 {
-                    roomList.Add(Room);
                     _context.DWRoomDim.Add(Room);
-                }
-                
+                }             
             }
             _context.SaveChanges();
         }
