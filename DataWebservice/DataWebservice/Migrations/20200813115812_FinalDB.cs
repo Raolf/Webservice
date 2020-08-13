@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataWebservice.Migrations
 {
-    public partial class Database : Migration
+    public partial class FinalDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -71,8 +71,8 @@ namespace DataWebservice.Migrations
                 name: "DWDateDim",
                 columns: table => new
                 {
-                    D_ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    D_ID = table.Column<int>(nullable: false),
+                        
                     Year = table.Column<int>(nullable: false),
                     Month = table.Column<int>(nullable: false),
                     Day = table.Column<int>(nullable: false),
@@ -117,8 +117,8 @@ namespace DataWebservice.Migrations
                 name: "DWRoomDim",
                 columns: table => new
                 {
-                    R_ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    R_ID = table.Column<int>(nullable: false),
+                        
                     RoomID = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     ValidFrom = table.Column<DateTime>(nullable: false),
@@ -133,8 +133,8 @@ namespace DataWebservice.Migrations
                 name: "DWServoDim",
                 columns: table => new
                 {
-                    S_ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    S_ID = table.Column<int>(nullable: false),
+                        
                     SensorID = table.Column<int>(nullable: false),
                     PD_ID = table.Column<int>(nullable: false),
                     DaysSinceSet = table.Column<int>(nullable: false),
@@ -152,8 +152,8 @@ namespace DataWebservice.Migrations
                 name: "DWUserDim",
                 columns: table => new
                 {
-                    U_ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    U_ID = table.Column<int>(nullable: false),
+                        
                     UserID = table.Column<int>(nullable: false),
                     DisplayName = table.Column<string>(nullable: true),
                     Admin = table.Column<bool>(nullable: false),

@@ -40,16 +40,12 @@ namespace DataWebservice.Data
                 .WithMany(ra => ra.roomAccess)
                 .HasForeignKey(r => r.roomID);
 
-
-
             modelBuilder.Entity<Models.Data>().HasKey(sd => new { sd.sensorID, sd.timestamp });
 
             modelBuilder.Entity<Models.Data>()
                 .HasOne(r => r.sensor)
                 .WithMany(sd => sd.data)
                 .HasForeignKey(r => r.sensorID);
-
-
 
             modelBuilder.Entity<SensorLog>().HasKey(sl => new { sl.sensorID});
 
