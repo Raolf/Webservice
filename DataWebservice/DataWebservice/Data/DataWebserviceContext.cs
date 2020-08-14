@@ -47,7 +47,7 @@ namespace DataWebservice.Data
                 .WithMany(sd => sd.data)
                 .HasForeignKey(r => r.sensorID);
 
-            modelBuilder.Entity<SensorLog>().HasKey(sl => new { sl.sensorID});
+            modelBuilder.Entity<SensorLog>().HasKey(sl => new { sl.sensorID, sl.timestamp });
 
             modelBuilder.Entity<SensorLog>()
                 .HasOne(s => s.sensor)

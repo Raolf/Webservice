@@ -113,7 +113,7 @@ namespace DataWebservice.Migrations
                     b.Property<DateTime>("timestamp")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("sensorID");
+                    b.HasKey("sensorID", "timestamp");
 
                     b.ToTable("SensorLog");
                 });

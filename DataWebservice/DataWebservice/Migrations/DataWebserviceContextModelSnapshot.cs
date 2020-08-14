@@ -105,13 +105,13 @@ namespace DataWebservice.Migrations
                     b.Property<int>("sensorID")
                         .HasColumnType("int");
 
-                    b.Property<string>("servoSetting")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("timestamp")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("sensorID");
+                    b.Property<string>("servoSetting")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("sensorID", "timestamp");
 
                     b.ToTable("SensorLog");
                 });

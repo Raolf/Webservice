@@ -22,11 +22,12 @@ namespace DataWebservice.Data
         SensorsController sc;
         DataController dc;
         SensorLogsController slc;
+        
 
         public LoriotWebsocket(DataWebserviceContext _context)
         {
             this._context = _context;
-            sc = new SensorsController(_context);
+            sc = new Controllers.API.SensorsController(_context);
             dc = new DataController(_context);
             slc = new SensorLogsController(_context);
         }
@@ -93,7 +94,7 @@ namespace DataWebservice.Data
             return data;
         }
 
-        public async void SendMessage(Sensor sensor)
+        public void SendMessage(Sensor sensor)
         {
             LoriotDTO msg = new LoriotDTO();
             msg.cmd = "tx";
@@ -112,17 +113,14 @@ namespace DataWebservice.Data
             log.servoSetting = sensor.servoSetting;
             log.timestamp = DateTime.Now;
 
-            //_context.Sensor.Find(sensor);
-            //sensor.sensorLog.Add(log);
-            //_context.SensorLog.Add(log);
             log.sensorID = sensor.sensorID;
-            //log.sensor = sensor;
-            await slc.PostSensorLog(log);
+            
+             slc.PostSensorLog(log).Wait();
              _context.SaveChanges();
         }
         public Sensor GetMatchingSensor(Models.Data data, DataWebserviceContext context)
         {
-            Sensor sense = context.Sensor.AsQueryable().First(s => s.sensorEUID == data.sensorEUID);
+            Sensor sense = context.Sensor.AsQueryable().FirstOrDefault(s => s.sensorEUID == data.sensorEUID);
             if (sense == null)
             {
                 sense = new Sensor();
@@ -130,19 +128,20 @@ namespace DataWebservice.Data
                 int count = context.Sensor.AsQueryable().Count();
                 sense.sensorLog = new List<SensorLog>();
                 sense.servoSetting = "00000000";
-
+                
                 sc.PostSensor(sense).Wait();
-                sense = context.Sensor.AsQueryable().First(s => s.sensorEUID == data.sensorEUID);
+                sense = context.Sensor.AsQueryable().FirstOrDefault(s => s.sensorEUID == data.sensorEUID);
+                
                 
             }          
 
-            data.sensor = sense;
-            data.sensorID = sense.sensorID;
+            
             return sense;
         }
-        public async void Save(Models.Data data)
+        public void Save(Models.Data data)
         {
             Sensor sensor = GetMatchingSensor(data, _context);
+            data.sensorID = sensor.sensorID;
             _context.Add(data);
             _context.SaveChanges();
             Console.WriteLine("Added data to DB.\n");

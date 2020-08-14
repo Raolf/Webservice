@@ -444,7 +444,7 @@ namespace DataWebservice.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SensorLog", x => x.sensorID);
+                    table.PrimaryKey("PK_SensorLog", x => new { x.sensorID, x.timestamp });
                     table.ForeignKey(
                         name: "FK_SensorLog_Sensor_sensorID",
                         column: x => x.sensorID,
